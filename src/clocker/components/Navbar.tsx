@@ -4,7 +4,7 @@ import { ClockerContext } from '../context/ClockerContext';
 import { HiOutlineUserCircle } from 'react-icons/hi';
 
 const Navbar = () => {
-  const { handleSideBarOpen } = useContext(ClockerContext);
+  const { handleSideBarOpen, user } = useContext(ClockerContext);
 
   return (
     <nav className='bg-blue-600 w-full p-2 px-5'>
@@ -16,8 +16,15 @@ const Navbar = () => {
           <GoSidebarCollapse size={30} color='white' />
           <span className='sr-only'>Open menu</span>
         </button>
-
-        <HiOutlineUserCircle size={30} color='white' />
+        {user.user_metadata.picture ? (
+          <img
+            className='w-10 h-10 rounded-full border border-white'
+            src={user.user_metadata.avatar_url}
+            alt='Rounded avatar'
+          />
+        ) : (
+          <HiOutlineUserCircle size={30} color='white' />
+        )}
       </div>
     </nav>
   );
