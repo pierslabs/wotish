@@ -1,12 +1,12 @@
-import { Navigate, Route, Routes } from "react-router-dom";
-import ClockerRouter from "../clocker/router/ClockerRouter";
-import AuthRouter from "../auth/router/AuthRouter";
-import useAuth from "../hooks/useAuth";
-import Loader from "../clocker/components/Loader";
-import { EAuthStatus } from "../enum/authStatus.enum";
+import { Navigate, Route, Routes } from 'react-router-dom';
+import ClockerRouter from '../clocker/router/ClockerRouter';
+import AuthRouter from '../auth/router/AuthRouter';
+import useAuth from '../hooks/useAuth';
+import Loader from '../clocker/components/Loader';
+import { EAuthStatus } from '../enum/authStatus.enum';
 
 const Approuter = () => {
-  const { session, status, authenticated } = useAuth();
+  const { status, authenticated } = useAuth();
 
   if (status === EAuthStatus.LOADING) {
     return <Loader />;
@@ -14,11 +14,11 @@ const Approuter = () => {
   return (
     <Routes>
       {authenticated ? (
-        <Route path="/*" element={<ClockerRouter />} />
+        <Route path='/*' element={<ClockerRouter />} />
       ) : (
-        <Route path="/auth/*" element={<AuthRouter />} />
+        <Route path='/auth/*' element={<AuthRouter />} />
       )}
-      <Route path="/*" element={<Navigate to="/auth/login/" />} />
+      <Route path='/*' element={<Navigate to='/auth/login/' />} />
     </Routes>
   );
 };
