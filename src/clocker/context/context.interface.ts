@@ -11,6 +11,7 @@ export interface User {
   email: string;
   email_confirmed_at: Date;
   phone: string;
+  dni?: string;
   confirmed_at: Date;
   last_sign_in_at: Date;
   app_metadata: AppMetadata;

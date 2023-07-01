@@ -7,13 +7,7 @@ const Sidebar = () => {
   const { handleSideBarOpen, isSidebarOpen } = useContext(ClockerContext);
 
   return (
-    <div className='flex h-screen absolute antialiased text-gray-900 bg-gray-100 dark:bg-dark dark:text-light'>
-      {/* Loading screen */}
-      {/* <div className="fixed inset-0 z-50 flex items-center justify-center text-2xl font-semibold text-white bg-blue-600">
-        Loading.....
-      </div> */}
-
-      {/* Sidebar */}
+    <div className='flex h-screen absolute antialiased text-gray-900 bg-gray-100 dark:bg-dark dark:text-light z-20'>
       <div
         className={`fixed inset-y-0 z-10 flex w-80 transition-all duration-500 ${
           isSidebarOpen ? '' : '-translate-x-full '
@@ -31,7 +25,6 @@ const Sidebar = () => {
           <path d='M268.487 0H0V800H247.32C207.957 725 207.975 492.294 268.487 367.647C329 243 314.906 53.4314 268.487 0Z' />
         </svg>
 
-        {/* Sidebar content */}
         <div className='z-10 flex flex-col flex-1'>
           <div className='flex items-center justify-between flex-shrink-0 w-64 p-4'>
             <Link to='/clocker'>

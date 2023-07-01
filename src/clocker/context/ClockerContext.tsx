@@ -1,5 +1,5 @@
 import { createContext, useCallback, useMemo, useState } from 'react';
-import { ClockerContextData } from './context.interface';
+import { ClockerContextData, User } from './context.interface';
 import { getLocalStorage } from '../../utils/getLocalStorage';
 
 export const ClockerContext = createContext({} as ClockerContextData);
@@ -15,7 +15,9 @@ export function ClockerProvider({ children }: ClockerProviderProps) {
     setIsSidebarOpen(value);
   }, []);
 
-  const { user } = getLocalStorage('sb-rmcdrbqhfgckghhsjdyt-auth-token');
+  const { user }: { user: User } = getLocalStorage(
+    'sb-rmcdrbqhfgckghhsjdyt-auth-token'
+  );
 
   const values = useMemo(
     () => ({
@@ -23,9 +25,9 @@ export function ClockerProvider({ children }: ClockerProviderProps) {
       handleSideBarOpen,
       user,
     }),
-    [isSidebarOpen, handleSideBarOpen]
+    [isSidebarOpen]
   );
-
+  console.log('render');
   return (
     <ClockerContext.Provider value={values}>{children}</ClockerContext.Provider>
   );
