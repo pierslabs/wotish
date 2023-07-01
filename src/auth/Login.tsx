@@ -3,6 +3,7 @@ import useAuth from '../hooks/useAuth';
 import { ThemeSupa } from '@supabase/auth-ui-shared';
 
 const Login = () => {
+  console.log('WeLcome to Login');
   const { supabase } = useAuth();
   return (
     <div
