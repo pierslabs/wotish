@@ -26,6 +26,7 @@ jobs:
       - name: 'Deploy Wotish'
         uses: appleboy/ssh-action@master
         env:
+          VITE_INTERNAL: true
           DB_PASSWORD: ${{secrets.DB_PASSWORD}}
           VITE_PROJECT_URL: ${{secrets.VITE_PROJECT_URL}}
           VITE_API_KEY: ${{secrets.VITE_API_KEY}}
