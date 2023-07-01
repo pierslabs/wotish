@@ -42,9 +42,9 @@ jobs:
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             npm install
       - name: 'Build Wotish'
-        run: npm run build
         env:
           VITE_INTERNAL: true
           DB_PASSWORD: ${{secrets.DB_PASSWORD}}
           VITE_PROJECT_URL: ${{secrets.VITE_PROJECT_URL}}
           VITE_API_KEY: ${{secrets.VITE_API_KEY}}
+        run: npm run build
