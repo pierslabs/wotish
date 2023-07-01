@@ -1,7 +1,4 @@
-import { useContext } from 'react';
 import Layout from '../Layout/Layout';
-import { ClockLoader } from 'react-spinners';
-import { ClockerContext } from '../context/ClockerContext';
 
 const User = () => {
   return (
