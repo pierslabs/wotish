@@ -22,12 +22,13 @@ jobs:
       - run: npm ci
       - run: npm run build --if-present
       # - run: npm run test
-      - env:
+
+      - name: 'Deploy Wotish'
+        uses: appleboy/ssh-action@master
+        env:
           DB_PASSWORD: ${{secrets.DB_PASSWORD}}
           VITE_PROJECT_URL: ${{secrets.VITE_PROJECT_URL}}
           VITE_API_KEY: ${{secrets.VITE_API_KEY}}
-      - name: 'Deploy Wotish'
-        uses: appleboy/ssh-action@master
         with:
           host: ${{secrets.HOST}}
           username: ${{secrets.USERNAME}}
