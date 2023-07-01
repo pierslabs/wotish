@@ -1,11 +1,13 @@
 import { useContext } from 'react';
 import { ClockerContext } from '../context/ClockerContext';
-
+import { Link, NavLink } from 'react-router-dom';
+import { GrHomeRounded } from 'react-icons/gr';
+import { AiOutlineUser } from 'react-icons/ai';
 const Sidebar = () => {
   const { handleSideBarOpen, isSidebarOpen } = useContext(ClockerContext);
-  console.log(isSidebarOpen);
+
   return (
-    <div className='flex h-screen antialiased text-gray-900 bg-gray-100 dark:bg-dark dark:text-light'>
+    <div className='flex h-screen absolute antialiased text-gray-900 bg-gray-100 dark:bg-dark dark:text-light'>
       {/* Loading screen */}
       {/* <div className="fixed inset-0 z-50 flex items-center justify-center text-2xl font-semibold text-white bg-blue-600">
         Loading.....
@@ -32,13 +34,11 @@ const Sidebar = () => {
         {/* Sidebar content */}
         <div className='z-10 flex flex-col flex-1'>
           <div className='flex items-center justify-between flex-shrink-0 w-64 p-4'>
-            {/* Logo */}
-            <a href='#'>
+            <Link to='/clocker'>
               <span className='sr-only'>Wotish</span>
               <h1 className='text-3xl text-blue-600'>Wotish</h1>
-            </a>
+            </Link>
 
-            {/* Close btn */}
             <button
               onClick={() => handleSideBarOpen(false)}
               className='p-1 rounded-lg focus:outline-none focus:ring'
@@ -62,25 +62,26 @@ const Sidebar = () => {
             </button>
           </div>
 
-          <nav className='flex flex-col flex-1 w-64 p-4 mt-4'>
-            <a href='#' className='flex items-center space-x-2'>
-              <svg
-                className='w-6 h-6'
-                aria-hidden='true'
-                xmlns='http://www.w3.org/2000/svg'
-                fill='none'
-                viewBox='0 0 24 24'
-                stroke='currentColor'
+          <nav className='flex  flex-col align-middle flex-1 w-64 p-4 mt-4'>
+            <div className='flex gap-4 m-2'>
+              <GrHomeRounded size={20} />
+              <NavLink
+                to='/clocker'
+                className={({ isActive }) => (isActive ? 'text-cyan-500' : '')}
               >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  strokeWidth='2'
-                  d='M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6'
-                />
-              </svg>
-              <span>Home</span>
-            </a>
+                Home
+              </NavLink>
+            </div>
+
+            <div className='flex gap-4 m-2'>
+              <AiOutlineUser size={20} />
+              <NavLink
+                to='/user'
+                className={({ isActive }) => (isActive ? 'text-cyan-500' : '')}
+              >
+                User
+              </NavLink>
+            </div>
           </nav>
 
           <div className='flex-shrink-0 p-4'>

@@ -1,12 +1,7 @@
-import Layout from "./Layout/Layout";
-import { ClockerProvider } from "./context/ClockerContext";
+import Home from './page/Home';
 
 const Clocker = () => {
-  return (
-    <ClockerProvider>
-      <Layout />
-    </ClockerProvider>
-  );
+  return <Home />;
 };
 
 export default Clocker;
