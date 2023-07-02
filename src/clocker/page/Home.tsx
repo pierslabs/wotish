@@ -23,7 +23,7 @@ const Home = () => {
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
             <div className='bg-white rounded-lg shadow-lg p-6'>
               <div className='flex justify-between align-middle'>
-                <h2 className='text-2xl font-bold mb-4'>Fichar</h2>
+                <h2 className='text-xl font-bold mb-4'>Fichar</h2>
                 <AiOutlineFieldTime size={30} color={'#07c3d8'} />
               </div>
               <p className='text-gray-700'>
@@ -33,7 +33,7 @@ const Home = () => {
             </div>
             <div className='bg-white rounded-lg shadow-lg p-6'>
               <div className='flex justify-between align-middle'>
-                <h2 className='text-2xl font-bold mb-4'>Modificar Usuario</h2>
+                <h2 className='text-xl font-bold mb-4'>Modificar Usuario</h2>
                 <FiUsers size={25} color={'#2e10da'} />
               </div>
               <p className='text-gray-700'>
@@ -43,7 +43,7 @@ const Home = () => {
             </div>
             <div className='bg-white rounded-lg shadow-lg p-6'>
               <div className='flex justify-between align-middle'>
-                <h2 className='text-2xl font-bold mb-4'>
+                <h2 className='text-xl font-bold mb-4'>
                   Ver Turnos de Trabajo
                 </h2>
                 <BsCalendar3 size={25} color={'#8c10da'} />
@@ -55,8 +55,8 @@ const Home = () => {
             </div>
             <div className='bg-white rounded-lg shadow-lg p-6'>
               <div className='flex justify-between align-middle'>
-                <h2 className='text-2xl font-bold mb-4'>
-                  Compartir Satisfacción con tu Trabajo
+                <h2 className='text-xl font-bold mb-4'>
+                  Satisfacción con el Trabajo
                 </h2>
                 <MdSentimentSatisfiedAlt size={28} color={'#15db26'} />
               </div>
@@ -68,7 +68,7 @@ const Home = () => {
             </div>
             <div className='bg-white rounded-lg shadow-lg p-6'>
               <div className='flex justify-between align-middle'>
-                <h2 className='text-2xl font-bold mb-4'>
+                <h2 className='text-xl font-bold mb-4'>
                   Valora a tus Compañeros
                 </h2>
                 <AiFillStar size={28} color={'#f8d50b'} />
