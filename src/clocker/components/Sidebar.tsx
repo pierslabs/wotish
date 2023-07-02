@@ -1,9 +1,10 @@
 import { useContext } from 'react';
 import { ClockerContext } from '../context/ClockerContext';
+import { supabaseLogOut } from '../../db/supabase';
 import { Link, NavLink } from 'react-router-dom';
 import { GrHomeRounded } from 'react-icons/gr';
-import { AiOutlineUser } from 'react-icons/ai';
-import { supabaseLogOut } from '../../db/supabase';
+import { AiOutlineUser, AiOutlineLogout } from 'react-icons/ai';
+import { GoEyeClosed } from 'react-icons/go';
 const Sidebar = () => {
   const { handleSideBarOpen, isSidebarOpen } = useContext(ClockerContext);
 
@@ -37,22 +38,7 @@ const Sidebar = () => {
               onClick={() => handleSideBarOpen(false)}
               className='p-1 rounded-lg focus:outline-none focus:ring'
             >
-              <svg
-                className='w-6 h-6'
-                aria-hidden='true'
-                xmlns='http://www.w3.org/2000/svg'
-                fill='none'
-                viewBox='0 0 24 24'
-                stroke='currentColor'
-              >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  strokeWidth='2'
-                  d='M6 18L18 6M6 6l12 12'
-                />
-              </svg>
-              <span className='sr-only'>Close sidebar</span>
+              <GoEyeClosed size={25} />
             </button>
           </div>
 
@@ -78,27 +64,13 @@ const Sidebar = () => {
             </div>
           </nav>
 
-          <div className='flex-shrink-0 p-4'>
+          <div className='flex justify-evenly  p-4 '>
             <button
-              className='flex items-center space-x-2'
+              className='flex items-center space-x-2 hover:text-blue-600'
               onClick={supabaseLogOut}
             >
-              <svg
-                aria-hidden='true'
-                className='w-6 h-6'
-                xmlns='http://www.w3.org/2000/svg'
-                fill='none'
-                viewBox='0 0 24 24'
-                stroke='currentColor'
-              >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  strokeWidth='2'
-                  d='M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1'
-                />
-              </svg>
-              <span>Logout</span>
+              <span className='mr-1'> LogOut</span>
+              <AiOutlineLogout size={40} />
             </button>
           </div>
         </div>
