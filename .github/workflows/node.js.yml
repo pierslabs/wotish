@@ -24,12 +24,13 @@ jobs:
       # - run: npm run test
 
       - name: 'Deploy Wotish'
-        uses: appleboy/ssh-action@master
         env:
           VITE_INTERNAL: true
           DB_PASSWORD: ${{secrets.DB_PASSWORD}}
           VITE_PROJECT_URL: ${{secrets.VITE_PROJECT_URL}}
           VITE_API_KEY: ${{secrets.VITE_API_KEY}}
+
+        uses: appleboy/ssh-action@master
         with:
           host: ${{secrets.HOST}}
           username: ${{secrets.USERNAME}}
@@ -41,10 +42,6 @@ jobs:
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             npm install
+            npm run build
       - name: 'Build Wotish'
-        env:
-          VITE_INTERNAL: true
-          DB_PASSWORD: ${{secrets.DB_PASSWORD}}
-          VITE_PROJECT_URL: ${{secrets.VITE_PROJECT_URL}}
-          VITE_API_KEY: ${{secrets.VITE_API_KEY}}
         run: npm run build
