@@ -1,4 +1,5 @@
-import { useContext } from 'react';
+/* eslint-disable react-refresh/only-export-components */
+import { memo, useContext } from 'react';
 import Layout from '../Layout/Layout';
 import { ClockerContext } from '../context/ClockerContext';
 
@@ -44,4 +45,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default memo(Home);
