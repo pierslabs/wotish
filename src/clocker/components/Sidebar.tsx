@@ -3,6 +3,7 @@ import { ClockerContext } from '../context/ClockerContext';
 import { Link, NavLink } from 'react-router-dom';
 import { GrHomeRounded } from 'react-icons/gr';
 import { AiOutlineUser } from 'react-icons/ai';
+import { supabaseLogOut } from '../../db/supabase';
 const Sidebar = () => {
   const { handleSideBarOpen, isSidebarOpen } = useContext(ClockerContext);
 
@@ -78,7 +79,10 @@ const Sidebar = () => {
           </nav>
 
           <div className='flex-shrink-0 p-4'>
-            <button className='flex items-center space-x-2'>
+            <button
+              className='flex items-center space-x-2'
+              onClick={supabaseLogOut}
+            >
               <svg
                 aria-hidden='true'
                 className='w-6 h-6'
