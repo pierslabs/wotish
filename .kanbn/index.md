@@ -9,6 +9,9 @@ completedColumns:
 
 ## Backlog
 
+- [user-page](tasks/user-page.md)
+- [user](tasks/user.md)
+
 ## Todo
 
 ## In Progress
