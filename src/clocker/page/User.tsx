@@ -1,4 +1,4 @@
-import { memo, useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Layout from '../Layout/Layout';
 import { ClockerContext } from '../context/ClockerContext';
 import { BsSearch } from 'react-icons/bs';
@@ -84,4 +84,4 @@ const User = () => {
   );
 };
 
-export default memo(User);
+export default User;
