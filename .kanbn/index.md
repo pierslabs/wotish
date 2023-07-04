@@ -11,6 +11,7 @@ completedColumns:
 
 - [user-page](tasks/user-page.md)
 - [user](tasks/user.md)
+- [navbar](tasks/navbar.md)
 
 ## Todo
 
