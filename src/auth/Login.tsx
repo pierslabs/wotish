@@ -7,7 +7,7 @@ const Login = () => {
   const { supabase } = useAuth();
   return (
     <div
-      className='flex flex-col align-middle justify-center border  bg-black h-100 '
+      className='flex flex-col align-middle justify-center   bg-black h-100 '
       style={{ height: '100vh' }}
     >
       <img
