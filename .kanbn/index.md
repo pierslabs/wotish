@@ -10,11 +10,12 @@ completedColumns:
 ## Backlog
 
 - [user-page](tasks/user-page.md)
-- [user](tasks/user.md)
 - [navbar](tasks/navbar.md)
 - [usuarios-propuestas](tasks/usuarios-propuestas.md)
 
 ## Todo
+
+- [user](tasks/user.md)
 
 ## In Progress
 
