@@ -30,7 +30,7 @@ const User = () => {
       <ToastContainer theme='dark' position='top-center' />
       {formVisible && (
         <form onSubmit={onSubmit}>
-          <div className='bg-blue-100 border-blue-500 text-blue-700 border-l-4 p-4 mt-4 absolute top-1/3 left-2 right-2 text-center z-10'>
+          <div className='bg-blue-100 border-blue-500 text-blue-700 border-l-4 p-4 mt-4 absolute top-1/3 left-2 right-2   text-center z-10 lg:w-2/3 sm:right-64 sm:left-64'>
             <p className='font-semibold'>
               Necesitamos tu DNI para el fichaje laboral.
             </p>
