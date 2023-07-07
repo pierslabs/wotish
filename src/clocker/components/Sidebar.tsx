@@ -3,7 +3,7 @@ import { ClockerContext } from '../context/ClockerContext';
 import { supabaseLogOut } from '../../db/supabase';
 import { Link, NavLink } from 'react-router-dom';
 import { GrHomeRounded } from 'react-icons/gr';
-import { AiOutlineUser, AiOutlineLogout } from 'react-icons/ai';
+import { AiOutlineLogout } from 'react-icons/ai';
 import { GoEyeClosed } from 'react-icons/go';
 import CardsData from '../data/cardData';
 const Sidebar = () => {
