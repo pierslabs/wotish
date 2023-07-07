@@ -1,4 +1,4 @@
-import Home from './page/Home';
+import Home from './pages/Home';
 
 const Clocker = () => {
   return <Home />;

@@ -1,7 +1,7 @@
 import { ClockerProvider } from '../context/ClockerContext';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import User from '../page/User';
-import Home from '../page/Home';
+import User from '../pages/User';
+import Home from '../pages/Home';
 
 const ClockerRouter = () => {
   return (
