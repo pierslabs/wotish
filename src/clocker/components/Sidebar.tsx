@@ -5,6 +5,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { GrHomeRounded } from 'react-icons/gr';
 import { AiOutlineUser, AiOutlineLogout } from 'react-icons/ai';
 import { GoEyeClosed } from 'react-icons/go';
+import CardsData from '../data/cardData';
 const Sidebar = () => {
   const { handleSideBarOpen, isSidebarOpen } = useContext(ClockerContext);
 
@@ -33,44 +34,53 @@ const Sidebar = () => {
               <span className='sr-only'>Wotish</span>
               <h1 className='text-3xl text-blue-600'>Wotish</h1>
             </Link>
-
             <button
               onClick={() => handleSideBarOpen(false)}
-              className='p-1 rounded-lg focus:outline-none focus:ring'
+              className='p-1 rounded-lg focus:outline-none focus:ring '
             >
               <GoEyeClosed size={25} />
             </button>
           </div>
 
-          <nav className='flex  flex-col align-middle flex-1 w-64 p-4 mt-4'>
-            <div className='flex gap-4 m-2'>
-              <GrHomeRounded size={20} />
+          <nav className='flex gap-3 flex-col flex-1 w-64 p-4 mt-4'>
+            <div className='flex gap-4 m-2  hover:text-cyan-500  duration-200'>
               <NavLink
                 to='/clocker'
                 className={({ isActive }) => (isActive ? 'text-cyan-500' : '')}
               >
-                Home
+                <div className='flex  gap-3 justify-start'>
+                  <div className='w-8'>
+                    <GrHomeRounded size={23} />
+                  </div>
+                  <p className='mt-1'> HOME</p>
+                </div>
               </NavLink>
             </div>
-
-            <div className='flex gap-4 m-2'>
-              <AiOutlineUser size={20} />
-              <NavLink
-                to='/user'
-                className={({ isActive }) => (isActive ? 'text-cyan-500' : '')}
-              >
-                User
-              </NavLink>
-            </div>
+            <hr />
+            {CardsData.map(({ key, icon, path }) => (
+              <div className='flex  m-2 hover:text-cyan-500 duration-200'>
+                <NavLink
+                  to={path}
+                  className={({ isActive }) => {
+                    return isActive ? 'text-cyan-500' : '';
+                  }}
+                >
+                  <div className='flex  gap-3 justify-start'>
+                    <div className='w-8'>{icon}</div>
+                    <p className='mt-1'> {key?.toUpperCase()}</p>
+                  </div>
+                </NavLink>
+              </div>
+            ))}
           </nav>
 
           <div className='flex justify-evenly  p-4 '>
             <button
-              className='flex items-center space-x-2 hover:text-blue-600'
+              className='flex items-center space-x-2 hover:text-blue-600 duration-200'
               onClick={supabaseLogOut}
             >
               <span className='mr-1'> LogOut</span>
-              <AiOutlineLogout size={40} />
+              <AiOutlineLogout size={35} />
             </button>
           </div>
         </div>

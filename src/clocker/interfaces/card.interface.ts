@@ -5,4 +5,5 @@ export interface CardProps {
   icon: JSX.Element;
   title: string;
   path: string;
+  key?: string;
 }

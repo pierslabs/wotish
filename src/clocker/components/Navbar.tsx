@@ -11,7 +11,7 @@ const Navbar = () => {
       <div className=' flex justify-between align-middle'>
         <button
           onClick={() => handleSideBarOpen(true)}
-          className='rounded-lg  left-5 text-white focus:outline-none  transition-transform  duration-300 hover:transform hover:scale-110'
+          className='rounded-lg  left-5 text-white focus:outline-none hover:text-green-300 transition-transform  duration-300 hover:transform hover:scale-110'
         >
           <GoSidebarCollapse size={30} />
         </button>
@@ -22,7 +22,7 @@ const Navbar = () => {
             alt='Rounded avatar'
           />
         ) : (
-          <HiOutlineUserCircle size={30} color='white' />
+          <HiOutlineUserCircle size={25} color='white' />
         )}
       </div>
     </nav>
