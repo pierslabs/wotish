@@ -11,10 +11,9 @@ const Navbar = () => {
       <div className=' flex justify-between align-middle'>
         <button
           onClick={() => handleSideBarOpen(true)}
-          className='rounded-lg  left-5 hover:text-blue-600 transition-colors'
+          className='rounded-lg  left-5 text-white focus:outline-none  transition-transform  duration-300 hover:transform hover:scale-110'
         >
-          <GoSidebarCollapse size={30} color='white' />
-          <span className='sr-only'>Open menu</span>
+          <GoSidebarCollapse size={30} />
         </button>
         {user.user_metadata.picture ? (
           <img
