@@ -21,8 +21,8 @@ const Home = () => {
         </header>
         <main className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
           <CardList>
-            {CardsData.map(({ title, text, icon }: CardProps) => (
-              <CardItem title={title} text={text} icon={icon} />
+            {CardsData.map(({ title, text, icon, path }: CardProps) => (
+              <CardItem title={title} text={text} icon={icon} path={path} />
             ))}
           </CardList>
         </main>
