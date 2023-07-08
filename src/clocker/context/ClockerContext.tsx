@@ -20,7 +20,7 @@ export function ClockerProvider({ children }: ClockerProviderProps) {
   const location = useLocation();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [currentLocation, setCurrentLocation] = useState(location);
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleSideBarOpen = useCallback((value: boolean) => {
     setIsSidebarOpen(value);
