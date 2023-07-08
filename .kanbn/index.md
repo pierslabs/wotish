@@ -10,10 +10,13 @@ completedColumns:
 ## Backlog
 
 - [usuarios-propuestas](tasks/usuarios-propuestas.md)
+- [arquitectura](tasks/arquitectura.md)
 
 ## Todo
 
 - [navbar](tasks/navbar.md)
+- [forms](tasks/forms.md)
+- [card-alerta-ejemplo-form-dni](tasks/card-alerta-ejemplo-form-dni.md)
 
 ## In Progress
 
