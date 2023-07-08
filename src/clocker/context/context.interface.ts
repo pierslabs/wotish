@@ -1,6 +1,8 @@
 export interface ClockerContextData {
   isSidebarOpen: boolean;
   handleSideBarOpen: (value: boolean) => void;
+  handleModalOpen: (value: boolean) => void;
+  isModalOpen: boolean;
   user: User;
 }
 

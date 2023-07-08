@@ -4,8 +4,11 @@ import { ClockerContext } from '../context/ClockerContext';
 import { BsSearch } from 'react-icons/bs';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import UserForm from '../components/userForm/UserForm';
 const User = () => {
-  const { user } = useContext(ClockerContext);
+  //refactor form card dni
+
+  const { user, handleModalOpen } = useContext(ClockerContext);
   const [dni, setDni] = useState('');
   const [formVisible, setFormVisible] = useState(false);
 
@@ -60,6 +63,8 @@ const User = () => {
           </div>
         </form>
       )}
+
+      <UserForm />
       <div
         className={`bg-white rounded-lg shadow-md p-4 sm:w-1/3 mx-auto m-20 ${
           !user.dni ? 'blur' : ''
@@ -78,6 +83,14 @@ const User = () => {
           <p className='text-gray-500'>{user.email}</p>
           <p className='text-gray-500'>{user.phone}</p>
           <p className='text-gray-500'>{user.id}</p>
+        </div>
+        <div className='w-100'>
+          <button
+            className='bg-blue-500 text-white font-semibold px-4 py-2 rounded mt-4'
+            onClick={() => handleModalOpen(true)}
+          >
+            Editar
+          </button>
         </div>
       </div>
     </Layout>

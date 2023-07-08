@@ -15,6 +15,14 @@ export const getUsers = async () => {
   return { data, error };
 };
 
+export const getUser = async (id: string) => {
+  const { data, error } = await supabase
+    .from('profiles')
+    .select('*')
+    .eq('id', id);
+  return { data, error };
+};
+
 export const createProfile = async (user: User) => {
   try {
     const { data, error } = await supabase
