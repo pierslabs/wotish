@@ -58,7 +58,10 @@ const Sidebar = () => {
             </div>
             <hr />
             {CardsData.map(({ key, icon, path }) => (
-              <div className='flex  m-2 hover:text-cyan-500 duration-200'>
+              <div
+                key={key}
+                className='flex  m-2 hover:text-cyan-500 duration-200'
+              >
                 <NavLink
                   to={path}
                   className={({ isActive }) => {
