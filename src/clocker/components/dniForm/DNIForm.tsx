@@ -2,13 +2,15 @@ import { ToastContainer } from 'react-toastify';
 import { HiOutlineIdentification } from 'react-icons/hi';
 import Button from '../common/Button';
 import useUserForm from '../../../hooks/useUserForm';
+import Loader from '../common/Loader';
 
 const DNIForm = () => {
-  const { onSubmit, register, userProfile, handleSubmit, dniRegex } =
+  const { onSubmit, register, userProfile, handleSubmit, dniRegex, loading } =
     useUserForm();
 
   return (
     <>
+      {loading && <Loader />}
       <ToastContainer theme='dark' position='top-center' />
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className='bg-blue-100 border-blue-500 text-blue-700 border-l-4 p-4 mt-4 absolute top-1/3 left-2 right-2   text-center z-10 lg:w-2/3 sm:right-64 sm:left-64'>

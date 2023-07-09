@@ -8,19 +8,16 @@ import Button from '../components/common/Button';
 import DNIForm from '../components/dniForm/DNIForm';
 
 const User = () => {
-  //refactor form card dni
-
   const { user, handleModalOpen, profile } = useContext(ClockerContext);
-  const [formVisible, setFormVisible] = useState(false);
 
   return (
     <Layout>
-      {!profile?.dni && <DNIForm setFormVisible={setFormVisible} />}
+      {!profile?.dni && <DNIForm />}
 
       <UserForm />
       <div
         className={`bg-white rounded-lg shadow-md p-4 sm:w-1/3 mx-auto m-20 ${
-          formVisible ? 'blur' : ''
+          !profile?.dni ? 'blur' : ''
         }`}
       >
         <img

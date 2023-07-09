@@ -27,7 +27,10 @@ const UserForm = () => {
         <div
           className={`fixed inset-0 flex items-center justify-center z-50   bg-gray-700 bg-opacity-80`}
         >
-          <div className='bg-white rounded-lg p-8 sm:w-1/2 m-2 max-w-md '>
+          <div
+            id='modal'
+            className='bg-white rounded-lg p-8 sm:w-1/2 m-2 max-w-md  border-4 border-green-700 '
+          >
             {/* <!-- Contenido del modal aquí --> */}
             <div className='flex justify-between items-center'>
               <h2 className='text-2xl font-bold mb-4'>Modifica tu usuario</h2>
@@ -37,11 +40,12 @@ const UserForm = () => {
             </div>
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className='flex flex-col gap-2 mt-4'
+              className='flex flex-col mt-4'
             >
+              <label className='mt-3 text-gray-700'>Nombre</label>
               <input
                 type='text'
-                className='pl-10 pr-4 py-2 w-full border border-gray-300 rounded-md outline-none'
+                className='pl-4 pr-4 py-2 w-full border border-gray-300 rounded-md outline-none'
                 {...register('full_name', {
                   required: {
                     value: true,
@@ -59,10 +63,10 @@ const UserForm = () => {
                   {String(errors.full_name.message)}
                 </span>
               )}
-
+              <label className='mt-3 text-gray-700'>Email</label>
               <input
                 type='text'
-                className='pl-10 pr-4 py-2 w-full border border-gray-300 rounded-md outline-none'
+                className='pl-4 pr-4 py-2 w-full border border-gray-300 rounded-md outline-none'
                 {...register('email', {
                   required: true,
                   pattern: {
@@ -77,10 +81,10 @@ const UserForm = () => {
                   {String(errors.email.message)}
                 </span>
               )}
-
+              <label className='mt-3 text-gray-700'>DNI</label>
               <input
                 type='text'
-                className='pl-10 pr-4 py-2 w-full border border-gray-300 rounded-md outline-none'
+                className='pl-4 pr-4 py-2 w-full border border-gray-300 rounded-md outline-none'
                 {...register('dni', {
                   required: true,
                   pattern: {
@@ -95,7 +99,6 @@ const UserForm = () => {
                   {String(errors.dni.message)}
                 </span>
               )}
-
               <Button value='Guardar' />
             </form>
           </div>
