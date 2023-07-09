@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { CardProps } from '../interfaces/card.interface';
+import { CardProps } from '../../interfaces/card.interface';
 import { useNavigate } from 'react-router-dom';
 
 const CardItem: FC<CardProps> = ({ text, icon, title, path }) => {

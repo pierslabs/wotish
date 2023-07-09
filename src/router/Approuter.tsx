@@ -2,7 +2,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import ClockerRouter from '../clocker/router/ClockerRouter';
 import AuthRouter from '../auth/router/AuthRouter';
 import useAuth from '../hooks/useAuth';
-import Loader from '../clocker/components/Loader';
+import Loader from '../clocker/components/common/Loader';
 import { EAuthStatus } from '../enum/authStatus.enum';
 
 const Approuter = () => {

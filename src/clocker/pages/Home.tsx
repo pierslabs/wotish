@@ -1,10 +1,10 @@
 /* eslint-disable react-refresh/only-export-components */
 import { memo, useContext } from 'react';
-import Layout from '../Layout/Layout';
+import { Layout } from '../components/Layout';
 import { ClockerContext } from '../context/ClockerContext';
-import CardList from '../components/CardList';
+import CardList from '../components/common/CardList';
 import CardsData from '../data/cardData';
-import CardItem from '../components/CardItem';
+import CardItem from '../components/common/CardItem';
 import { CardProps } from '../interfaces/card.interface';
 
 const Home = () => {

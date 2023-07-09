@@ -1,10 +1,11 @@
 import { useContext, useEffect, useState } from 'react';
-import Layout from '../Layout/Layout';
+import { Layout } from '../components/Layout';
 import { ClockerContext } from '../context/ClockerContext';
 import { BsSearch } from 'react-icons/bs';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import UserForm from '../components/userForm/UserForm';
+import Button from '../components/common/Button';
 const User = () => {
   //refactor form card dni
 
@@ -85,12 +86,7 @@ const User = () => {
           <p className='text-gray-500'>{user.id}</p>
         </div>
         <div className='w-100'>
-          <button
-            className='bg-blue-500 text-white font-semibold px-4 py-2 rounded mt-4'
-            onClick={() => handleModalOpen(true)}
-          >
-            Editar
-          </button>
+          <Button value='Editar' onClick={() => handleModalOpen(true)} />
         </div>
       </div>
     </Layout>
