@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from 'react';
+import { Profile } from '../../context/context.interface';
 import { useForm } from 'react-hook-form';
 import { getUser, updateUser } from '../../../db/supabase';
 import { ClockerContext } from '../../context/ClockerContext';
 import { toast } from 'react-toastify';
-import { Profile } from '../../context/context.interface';
 
 const useUserForm = () => {
   const { user, handleModalOpen, handleUpdateProfile } =
