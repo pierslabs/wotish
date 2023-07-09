@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { Layout } from '../components/Layout';
 import { ClockerContext } from '../context/ClockerContext';
 
