@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
-import { Profile } from '../../context/context.interface';
+import { Profile } from '../clocker/context/context.interface';
 import { useForm } from 'react-hook-form';
-import { getUser, updateUser } from '../../../db/supabase';
-import { ClockerContext } from '../../context/ClockerContext';
+import { getUser, updateUser } from '../db/supabase';
+import { ClockerContext } from '../clocker/context/ClockerContext';
 import { toast } from 'react-toastify';
 
 const useUserForm = () => {
@@ -10,6 +10,7 @@ const useUserForm = () => {
     useContext(ClockerContext);
   const [userProfile, setUserProfile] = useState<Partial<Profile>>();
   const [loading, setLoading] = useState(false);
+  const dniRegex = /^\d{8}[A-HJ-NP-TV-Z]$/;
 
   const {
     register,
@@ -51,12 +52,20 @@ const useUserForm = () => {
 
       // Set values to form
       setValue('full_name', user.full_name);
-      setValue('dni', user.dni || 'introduce tu dni');
+      setValue('dni', user.dni);
       setValue('email', user.email);
     });
   }, [setValue, user.id]);
 
-  return { register, handleSubmit, errors, onSubmit, userProfile, loading };
+  return {
+    register,
+    handleSubmit,
+    errors,
+    onSubmit,
+    userProfile,
+    loading,
+    dniRegex,
+  };
 };
 
 export default useUserForm;

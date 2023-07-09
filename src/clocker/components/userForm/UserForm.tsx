@@ -1,6 +1,6 @@
 import { GrClose } from 'react-icons/gr';
 
-import useUserForm from './useUserForm';
+import useUserForm from '../../../hooks/useUserForm';
 import { useContext } from 'react';
 import { ClockerContext } from '../../context/ClockerContext';
 import Button from '../common/Button';
@@ -9,10 +9,16 @@ import Loader from '../common/Loader';
 
 const UserForm = () => {
   const { isModalOpen, handleModalOpen } = useContext(ClockerContext);
-  const { register, handleSubmit, errors, onSubmit, userProfile, loading } =
-    useUserForm();
-  const dniRegex = /^\d{8}[A-HJ-NP-TV-Z]$/;
-  console.log(errors);
+  const {
+    register,
+    handleSubmit,
+    errors,
+    onSubmit,
+    userProfile,
+    loading,
+    dniRegex,
+  } = useUserForm();
+
   return (
     <>
       <ToastContainer />
