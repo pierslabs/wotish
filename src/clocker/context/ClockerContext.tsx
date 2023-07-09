@@ -88,15 +88,7 @@ export function ClockerProvider({ children }: ClockerProviderProps) {
       handleUpdateProfile,
       profile,
     }),
-    [
-      isSidebarOpen,
-      handleSideBarOpen,
-      isModalOpen,
-      handleModalOpen,
-      user,
-      handleUpdateProfile,
-      profile,
-    ]
+    [isSidebarOpen, isModalOpen, profile]
   );
 
   console.log('render');
