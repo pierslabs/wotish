@@ -4,6 +4,8 @@ export interface ClockerContextData {
   handleModalOpen: (value: boolean) => void;
   isModalOpen: boolean;
   user: User;
+  profile: Profile | undefined;
+  handleUpdateProfile: () => Promise<void>;
 }
 
 export interface User {
@@ -48,4 +50,15 @@ export interface Data {
   picture: string;
   provider_id: string;
   sub: string;
+}
+
+export interface Profile {
+  id: string;
+  full_name: string;
+  dni: string;
+  email: string;
+  avatar: string;
+  company: string;
+  id_profile: string;
+  phone?: string;
 }

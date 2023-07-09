@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
-import { User } from '../clocker/context/context.interface';
+import { Profile, User } from '../clocker/context/context.interface';
 
 export const supabase = createClient(
   import.meta.env.VITE_PROJECT_URL,
@@ -23,6 +23,14 @@ export const getUser = async (id: string) => {
   return { data, error };
 };
 
+export const updateUser = async (id: string, updates: Partial<Profile>) => {
+  const { data, error } = await supabase
+    .from('profiles')
+    .update(updates)
+    .eq('id', id);
+  return { data, error };
+};
+
 export const createProfile = async (user: User) => {
   try {
     const { data, error } = await supabase
@@ -42,15 +50,13 @@ export const createProfile = async (user: User) => {
 
       if (companyError) return;
 
-      const { data, error } = await supabase.from('profiles').insert({
+      await supabase.from('profiles').insert({
         id: user.id,
         full_name,
         avatar: avatar_url,
         email: user.email,
         company: companyData[0].id,
       });
-
-      console.log(data, error);
     }
 
     return data;

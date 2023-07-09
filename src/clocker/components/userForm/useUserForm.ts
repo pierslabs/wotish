@@ -1,14 +1,15 @@
 import { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { getUser } from '../../../db/supabase';
-import { Profile } from '../../interfaces/profile.interface';
+import { getUser, updateUser } from '../../../db/supabase';
 import { ClockerContext } from '../../context/ClockerContext';
+import { toast } from 'react-toastify';
+import { Profile } from '../../context/context.interface';
 
 const useUserForm = () => {
-  // TODO: add context
-  // TODO: make a custom hook for this
-  const { user } = useContext(ClockerContext);
+  const { user, handleModalOpen, handleUpdateProfile } =
+    useContext(ClockerContext);
   const [userProfile, setUserProfile] = useState<Partial<Profile>>();
+  const [loading, setLoading] = useState(false);
 
   const {
     register,
@@ -17,7 +18,23 @@ const useUserForm = () => {
     setValue,
   } = useForm();
 
-  const onSubmit = (data: any) => console.log(data);
+  const onSubmit = async (data: Partial<Profile>) => {
+    setLoading(true);
+    try {
+      const res = await updateUser(user.id, data);
+
+      if (res.error) {
+        return toast.error('Error al actualizar el usuario');
+      }
+      await handleUpdateProfile();
+      handleModalOpen(false);
+    } catch (error) {
+      console.log(error);
+      toast.error('Error al actualizar el usuario');
+    }
+
+    setLoading(false);
+  };
 
   useEffect(() => {
     getUser(user.id).then(({ data }) => {
@@ -37,9 +54,9 @@ const useUserForm = () => {
       setValue('dni', user.dni || 'introduce tu dni');
       setValue('email', user.email);
     });
-  }, []);
-  //
-  return { register, handleSubmit, errors, onSubmit, userProfile };
+  }, [setValue, user.id]);
+
+  return { register, handleSubmit, errors, onSubmit, userProfile, loading };
 };
 
 export default useUserForm;
