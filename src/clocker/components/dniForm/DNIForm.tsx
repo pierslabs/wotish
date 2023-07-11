@@ -12,8 +12,11 @@ const DNIForm = () => {
     <>
       {loading && <Loader />}
       <ToastContainer theme='dark' position='top-center' />
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className='bg-blue-100 border-blue-500 text-blue-700 border-l-4 p-4 mt-4 absolute top-1/3 left-2 right-2   text-center z-10 lg:w-2/3 sm:right-64 sm:left-64'>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className='fixed inset-0 flex items-center justify-center z-50 bg-gray-700 bg-opacity-80'
+      >
+        <div className='bg-blue-100 border-blue-500 text-blue-700 border-l-4 p-4 mt-4 top-1/3 left-2 right-2 text-center z-10  sm:right-64 sm:left-64 lg:w-2/5'>
           <p className='font-semibold'>
             Necesitamos tu DNI para el fichaje laboral.
           </p>
@@ -22,11 +25,14 @@ const DNIForm = () => {
             empleados y cumplir con las normativas laborales.
           </p>
 
-          <div className='relative sm:w-1/5 mt-4  '>
+          <div className='flex justify-center  mt-4 '>
+            <span className='text-gray-400 bg-white p-2'>
+              <HiOutlineIdentification size={25} />
+            </span>
             <input
               type='text'
-              placeholder='Introduce tu dni porfavor'
-              className='pl-10 pr-4 py-2 border border-gray-300 rounded-md outline-none w-full text-gray-700'
+              placeholder='Introduce tu DNI, por favor'
+              className='py-1 pr-4  border-gray-300  outline-none text-gray-700'
               {...register('dni', {
                 required: true,
                 pattern: {
@@ -36,9 +42,6 @@ const DNIForm = () => {
               })}
               defaultValue={userProfile?.dni}
             />
-            <span className='absolute left-3 top-2 text-gray-400'>
-              <HiOutlineIdentification size={25} />
-            </span>
           </div>
           <Button value='Guardar' />
         </div>
