@@ -17,7 +17,11 @@ const useUserForm = () => {
     handleSubmit,
     formState: { errors },
     setValue,
-  } = useForm();
+  } = useForm({
+    reValidateMode: 'onBlur',
+    mode: 'onTouched',
+    shouldUseNativeValidation: false,
+  });
 
   const onSubmit = async (data: Partial<Profile>) => {
     setLoading(true);

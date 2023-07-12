@@ -81,6 +81,25 @@ const UserForm = () => {
                   {String(errors.email.message)}
                 </span>
               )}
+              <label className='mt-3 text-gray-700'>Teléfono</label>
+              <input
+                formNoValidate={true}
+                type='text'
+                className='pl-4 pr-4 py-2 w-full border border-gray-300 rounded-md outline-none'
+                {...register('phone', {
+                  required: true,
+                  pattern: {
+                    value: /^[679]\d{8}$/,
+                    message: 'Teléfono no válido',
+                  },
+                })}
+                defaultValue={userProfile?.phone}
+              />
+              {errors.phone && (
+                <span className='text-red-500'>
+                  {String(errors.phone.message)}
+                </span>
+              )}
               <label className='mt-3 text-gray-700'>DNI</label>
               <input
                 type='text'
