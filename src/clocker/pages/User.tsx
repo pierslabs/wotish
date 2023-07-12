@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import UserForm from '../components/userForm/UserForm';
 import Button from '../components/common/Button';
 import DNIForm from '../components/dniForm/DNIForm';
+import { AiFillStar } from 'react-icons/ai';
 
 const User = () => {
   const { user, handleModalOpen, profile } = useContext(ClockerContext);
@@ -17,11 +18,9 @@ const User = () => {
       <UserForm />
 
       <div className='  mx-auto lg:w-2/3'>
-        <div className='p-4'>
-          <div className='w-100 flex justify-end m-4'>
-            <Button value='Editar' onClick={() => handleModalOpen(true)} />
-          </div>
-          {/* Avatar */}
+        <section className='p-2'>
+          <h1 className='text-xl mr-auto mt-4 p-3'>Tu Perfil</h1>
+          <hr />
           <div className='flex flex-col w-full  justify-evenly items-center sm:flex-row mt-7 '>
             <div className='bg-blue-300  rounded-lg p-4 shadow hidden sm:block justify-center '>
               <img
@@ -31,9 +30,12 @@ const User = () => {
               />
             </div>
 
-            {/* Datos del usuario */}
             <div className='bg-green-100 flex flex-col gap-2 rounded-lg p-4 shadow mt-4 sm:w-2/4'>
-              <h2 className='text-xl font-bold'>{profile?.full_name}</h2>
+              <div className='flex justify-between items-center'>
+                <p className='text-xl font-bold'>{profile?.full_name}</p>
+                <Button value='Editar' onClick={() => handleModalOpen(true)} />
+              </div>
+
               <hr />
               {profile?.dni && (
                 <div className='bg-white p-2 flex gap-1'>
@@ -63,20 +65,73 @@ const User = () => {
               </div>
             </div>
           </div>
+        </section>
 
-          {/* Comentarios */}
-          <div className='grid grid-cols-1 md:grid-cols-3 gap-4 mt-4'>
+        {/* Comentarios */}
+        <section className='p-2'>
+          <h1 className='text-xl mr-auto mt-6 p-3'>
+            Comentarios de tus compañeros
+          </h1>
+          <hr />
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mt-5'>
             <div className='bg-blue-300 rounded-lg p-4 shadow'>
-              {/* Aquí puedes agregar el código para mostrar los comentarios azules */}
+              <div>
+                <div className='flex justify-end gap-2 items-center'>
+                  <p className='text-xl'>4</p>
+                  <AiFillStar color='yellow' size={25} />
+                </div>
+                <hr />
+                <div className='mt-3'>
+                  <p>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Consectetur nisi aperiam ab voluptatibus officiis, veniam
+                  </p>
+                  <div className='flex justify-end mt-3'>
+                    <p className=' text-slate-700'>Rihana</p>
+                  </div>
+                </div>
+              </div>
             </div>
             <div className='bg-green-300 rounded-lg p-4 shadow'>
-              {/* Aquí puedes agregar el código para mostrar los comentarios verdes */}
+              <div>
+                <div className='flex justify-end gap-2 items-center'>
+                  <p className='text-xl'>4</p>
+                  <AiFillStar color='yellow' size={25} />
+                </div>
+                <hr />
+
+                <div className='mt-3'>
+                  <p>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Consectetur nisi aperiam ab voluptatibus officiis, veniam
+                  </p>
+                  <div className='flex justify-end mt-3'>
+                    <p className=' text-slate-700'> Tom Morello</p>
+                  </div>
+                </div>
+              </div>
             </div>
             <div className='bg-yellow-300 rounded-lg p-4 shadow'>
-              {/* Aquí puedes agregar el código para mostrar los comentarios amarillos */}
+              <div>
+                <div className='flex justify-end gap-1 items-center'>
+                  <p className='text-xl'>2</p>
+                  <AiFillStar color='yellow' size={25} />
+                </div>
+                <hr />
+
+                <div className='mt-3'>
+                  <p>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Consectetur nisi aperiam ab voluptatibus officiis, veniam
+                  </p>
+                  <div className='flex justify-end mt-3'>
+                    <p className='text-slate-700 '>Adam Sandler</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </section>
       </div>
     </Layout>
   );
