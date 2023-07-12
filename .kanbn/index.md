@@ -17,6 +17,9 @@ completedColumns:
 - [navbar](tasks/navbar.md)
 - [forms](tasks/forms.md)
 - [card-alerta-ejemplo-form-dni](tasks/card-alerta-ejemplo-form-dni.md)
+- [pagina-comentarios](tasks/pagina-comentarios.md)
+- [pagina-turnos](tasks/pagina-turnos.md)
+- [pagina-wellnes](tasks/pagina-wellnes.md)
 
 ## In Progress
 
