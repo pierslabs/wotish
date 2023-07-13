@@ -6,7 +6,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import UserForm from '../components/userForm/UserForm';
 import Button from '../components/common/Button';
 import DNIForm from '../components/dniForm/DNIForm';
-import { AiFillStar } from 'react-icons/ai';
+import CommentItem from '../components/common/CommentItem';
+import { CommentData, fakeCommentData } from '../data/fakeComments';
 
 const User = () => {
   const { user, handleModalOpen, profile } = useContext(ClockerContext);
@@ -74,62 +75,14 @@ const User = () => {
           </h1>
           <hr />
           <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mt-5'>
-            <div className='bg-blue-300 rounded-lg p-4 shadow'>
-              <div>
-                <div className='flex justify-end gap-2 items-center'>
-                  <p className='text-xl'>4</p>
-                  <AiFillStar color='yellow' size={25} />
-                </div>
-                <hr />
-                <div className='mt-3'>
-                  <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Consectetur nisi aperiam ab voluptatibus officiis, veniam
-                  </p>
-                  <div className='flex justify-end mt-3'>
-                    <p className=' text-slate-700'>Rihana</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className='bg-green-300 rounded-lg p-4 shadow'>
-              <div>
-                <div className='flex justify-end gap-2 items-center'>
-                  <p className='text-xl'>4</p>
-                  <AiFillStar color='yellow' size={25} />
-                </div>
-                <hr />
-
-                <div className='mt-3'>
-                  <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Consectetur nisi aperiam ab voluptatibus officiis, veniam
-                  </p>
-                  <div className='flex justify-end mt-3'>
-                    <p className=' text-slate-700'> Tom Morello</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className='bg-yellow-300 rounded-lg p-4 shadow'>
-              <div>
-                <div className='flex justify-end gap-1 items-center'>
-                  <p className='text-xl'>2</p>
-                  <AiFillStar color='yellow' size={25} />
-                </div>
-                <hr />
-
-                <div className='mt-3'>
-                  <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Consectetur nisi aperiam ab voluptatibus officiis, veniam
-                  </p>
-                  <div className='flex justify-end mt-3'>
-                    <p className='text-slate-700 '>Adam Sandler</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {fakeCommentData.map((comment: CommentData) => (
+              <CommentItem
+                key={comment.id}
+                stars={comment.stars}
+                comment={comment.comment}
+                user={comment.name}
+              />
+            ))}
           </div>
         </section>
       </div>
