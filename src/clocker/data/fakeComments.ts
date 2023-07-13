@@ -12,7 +12,7 @@ export const fakeCommentData: CommentData[] = [
   {
     id: '1',
     stars: 5,
-    created_at: '2023-07-13',
+    created_at: '2023-11-11T18:20:00+01:00',
     user_id: '1',
     name: 'Mike Wazowski',
     user_assigned_id: 'user2',
@@ -22,7 +22,7 @@ export const fakeCommentData: CommentData[] = [
   {
     id: '2',
     stars: 1,
-    created_at: '2023-07-13',
+    created_at: '2023-04-01T10:00:00-08:00',
     user_id: '3',
     name: 'Jack Sparrow',
     user_assigned_id: 'user1',
@@ -32,7 +32,7 @@ export const fakeCommentData: CommentData[] = [
   {
     id: '3',
     stars: 4,
-    created_at: '2023-07-13',
+    created_at: '2023-02-15T08:30:00+00:00',
     user_id: '2',
     name: 'Marie Curie',
     user_assigned_id: 'user3',
@@ -42,7 +42,7 @@ export const fakeCommentData: CommentData[] = [
   {
     id: '4',
     stars: 3,
-    created_at: '2023-07-13',
+    created_at: '2023-06-04T16:45:00-05:00',
     user_id: '3',
     name: 'Jack Sparrow',
     user_assigned_id: 'user1',
@@ -52,7 +52,7 @@ export const fakeCommentData: CommentData[] = [
   {
     id: '5',
     stars: 2,
-    created_at: '2023-07-13',
+    created_at: '2023-09-22T12:15:00+03:00',
     user_id: '2',
     name: 'Marie Curie',
     user_assigned_id: 'user3',

@@ -81,6 +81,7 @@ const User = () => {
                 stars={comment.stars}
                 comment={comment.comment}
                 user={comment.name}
+                created_at={comment.created_at}
               />
             ))}
           </div>

@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { FC } from 'react';
 import { AiFillStar } from 'react-icons/ai';
 
@@ -5,6 +6,7 @@ export interface CommentItemProps {
   stars: number;
   comment: string;
   user: string;
+  created_at: string;
 }
 export type CardColor =
   | 'bg-red-400'
@@ -13,7 +15,12 @@ export type CardColor =
   | 'bg-green-300'
   | 'bg-green-500';
 
-const CommentItem: FC<CommentItemProps> = ({ stars, comment, user }) => {
+const CommentItem: FC<CommentItemProps> = ({
+  stars,
+  comment,
+  user,
+  created_at,
+}) => {
   const colorCard: Record<number, CardColor> = {
     1: 'bg-red-400',
     2: 'bg-orange-300',
@@ -22,18 +29,24 @@ const CommentItem: FC<CommentItemProps> = ({ stars, comment, user }) => {
     5: 'bg-green-500',
   };
 
+  const date = moment(created_at).format('DD/MM/YYYY');
   return (
     <div className={`${colorCard[stars]} rounded-lg p-4 shadow`}>
       <div>
-        <div className='flex bg justify-end gap-3 items-center mb-2'>
-          <p className='text-xl'>{stars}</p>
-          <AiFillStar color='yellow' size={25} />
+        <div className='flex justify-between items-baseline px-5 py-2 text-gray-600 rounded-full'>
+          <div className='text-gray-700'>{date}</div>
+          <div className='flex bg justify-end gap-3 items-center '>
+            <p className='text-xl'>{stars}</p>
+            <AiFillStar color='yellow' size={25} />
+          </div>
         </div>
         <hr />
+        <br />
         <div className='mt-3'>
           <p>{comment}</p>
-          <div className='flex justify-end mt-3'>
-            <p className=' text-slate-700 mt-3'>{user}</p>
+          <br />
+          <div className='flex justify-end '>
+            <p className=' text-slate-700 '>{user}</p>
           </div>
         </div>
       </div>
