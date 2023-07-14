@@ -31,24 +31,21 @@ const CommentItem: FC<CommentItemProps> = ({
 
   const date = moment(created_at).format('DD/MM/YYYY');
   return (
-    <div className={`${colorCard[stars]} rounded-lg p-4 shadow`}>
-      <div>
-        <div className='flex justify-between items-baseline px-5 py-2 text-gray-600 rounded-full'>
-          <div className='text-gray-700'>{date}</div>
-          <div className='flex bg justify-end gap-3 items-center '>
-            <p className='text-xl'>{stars}</p>
-            <AiFillStar color='yellow' size={25} />
-          </div>
+    <div className={`${colorCard[stars]} rounded-lg border  shadow`}>
+      <div className='flex justify-between items-baseline px-5 py-2 text-gray-600 rounded-full'>
+        <div className='text-gray-700'>{date}</div>
+        <div className='flex bg justify-end gap-3 items-center '>
+          <p className='text-xl'>{stars}</p>
+          <AiFillStar color='yellow' size={25} />
         </div>
-        <hr />
+      </div>
+      <div className='my-2 bg-white p-2 h-44 '>
         <br />
-        <div className='mt-3'>
-          <p>{comment}</p>
-          <br />
-          <div className='flex justify-end '>
-            <p className=' text-slate-700 '>{user}</p>
-          </div>
-        </div>
+        <p>{comment}</p>
+        <br />
+      </div>
+      <div className='flex justify-end p-3'>
+        <p className=' text-slate-700 font-medium'>{user}</p>
       </div>
     </div>
   );
