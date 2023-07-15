@@ -1,17 +1,21 @@
 /* eslint-disable react-refresh/only-export-components */
-import { memo, useContext, useRef } from 'react';
+import { memo, useContext, useEffect, useRef } from 'react';
 import { Layout } from '../components/Layout';
 import { ClockerContext } from '../context/ClockerContext';
 import CardList from '../components/common/CardList';
 import CardsData from '../data/cardData';
 import CardItem from '../components/common/CardItem';
 import { CardProps } from '../interfaces/card.interface';
+import { NavbarColor } from '../components/Navbar/navbar.enum';
 
 const Home = () => {
   const { profile } = useContext(ClockerContext);
-  const countRef = useRef(0);
 
-  console.log('Home render', countRef.current++);
+  const { handleNavbarColor } = useContext(ClockerContext);
+  useEffect(() => {
+    handleNavbarColor(NavbarColor.DEFAULT);
+  }, []);
+
   return (
     <Layout>
       <div className='bg-gray-100 min-h-screen'>

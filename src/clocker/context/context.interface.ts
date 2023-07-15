@@ -1,3 +1,5 @@
+import { NavbarColor } from '../components/Navbar/navbar.enum';
+
 export interface ClockerContextData {
   isSidebarOpen: boolean;
   handleSideBarOpen: (value: boolean) => void;
@@ -6,6 +8,8 @@ export interface ClockerContextData {
   user: User;
   profile: Profile | undefined;
   handleUpdateProfile: () => Promise<void>;
+  handleNavbarColor: (color: NavbarColor) => void;
+  navbarColor: string;
 }
 
 export interface User {

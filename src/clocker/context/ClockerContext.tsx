@@ -9,6 +9,7 @@ import { ClockerContextData, Profile, User } from './context.interface';
 import { getLocalStorage } from '../../utils/getLocalStorage';
 import { useLocation } from 'react-router-dom';
 import { createProfile, getUser } from '../../db/supabase';
+import { NavbarColor } from '../components/Navbar/navbar.enum';
 
 export const ClockerContext = createContext({} as ClockerContextData);
 
@@ -26,6 +27,9 @@ export function ClockerProvider({ children }: ClockerProviderProps) {
   const [currentLocation, setCurrentLocation] = useState(location);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [profile, setProfile] = useState<Profile>();
+  const [navbarColor, setNavbarColor] = useState<NavbarColor>(
+    NavbarColor.DEFAULT
+  );
 
   const handleSideBarOpen = useCallback((value: boolean) => {
     setIsSidebarOpen(value);
@@ -39,6 +43,10 @@ export function ClockerProvider({ children }: ClockerProviderProps) {
     setProfile(profile);
   }, []);
 
+  const handleNavbarColor = useCallback(async (color: NavbarColor) => {
+    setNavbarColor(color);
+  }, []);
+
   const handleUpdateProfile = useCallback(async () => {
     try {
       const res = await getUser(user.id);
@@ -48,11 +56,9 @@ export function ClockerProvider({ children }: ClockerProviderProps) {
     } catch (error) {
       console.log(error);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [handleProfile, user.id]);
 
   //Effects
-
   useEffect(() => {
     createProfile(user);
   }, [user]);
@@ -84,7 +90,8 @@ export function ClockerProvider({ children }: ClockerProviderProps) {
       isModalOpen,
       handleModalOpen,
       user,
-
+      navbarColor,
+      handleNavbarColor,
       handleUpdateProfile,
       profile,
     }),

@@ -3,7 +3,19 @@
 @tailwind utilities;
 .responsive-calendar {
   /* by setting font-size, all the elements will correspond */
-  font-size: 0.8rem !important;
+  font-size: 0.6rem !important;
+}
+
+@media (max-width: 2000px) {
+  .responsive-calendar {
+    font-size: 1.2rem !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .responsive-calendar {
+    font-size: 0.7rem !important;
+  }
 }
 
 .waves {

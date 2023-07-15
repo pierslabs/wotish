@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { Layout } from '../components/Layout';
 import { ClockerContext } from '../context/ClockerContext';
 
@@ -8,10 +8,15 @@ import Button from '../components/common/Button';
 import DNIForm from '../components/dniForm/DNIForm';
 import CommentItem from '../components/common/CommentItem';
 import { CommentData, fakeCommentData } from '../data/fakeComments';
+import { NavbarColor } from '../components/Navbar/navbar.enum';
 
 const User = () => {
   const { user, handleModalOpen, profile } = useContext(ClockerContext);
 
+  const { handleNavbarColor } = useContext(ClockerContext);
+  useEffect(() => {
+    handleNavbarColor(NavbarColor.USER);
+  }, []);
   return (
     <Layout>
       {!profile?.dni && <DNIForm />}
