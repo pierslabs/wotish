@@ -6,7 +6,12 @@ import {
   useMemo,
   useState,
 } from 'react';
-import { ClockerContextData, Profile, User } from './context.interface';
+import {
+  ClockerContextData,
+  NotificationData,
+  Profile,
+  User,
+} from './context.interface';
 import { getLocalStorage } from '../../utils/getLocalStorage';
 import { useLocation } from 'react-router-dom';
 import { createProfile, getUser } from '../../db/supabase';
@@ -32,6 +37,12 @@ export function ClockerProvider({ children }: ClockerProviderProps) {
     NavbarColor.DEFAULT
   );
 
+  const [notificationData, setNotificationData] = useState<NotificationData>({
+    open: false,
+    message: '',
+    alert: true,
+  });
+
   const handleSideBarOpen = useCallback((value: boolean) => {
     setIsSidebarOpen(value);
   }, []);
@@ -47,6 +58,13 @@ export function ClockerProvider({ children }: ClockerProviderProps) {
   const handleNavbarColor = useCallback(async (color: NavbarColor) => {
     setNavbarColor(color);
   }, []);
+
+  const handleNotificationData = useCallback(
+    (notificationData: NotificationData) => {
+      setNotificationData(notificationData);
+    },
+    []
+  );
 
   const handleUpdateProfile = useCallback(async () => {
     try {
@@ -95,8 +113,10 @@ export function ClockerProvider({ children }: ClockerProviderProps) {
       handleNavbarColor,
       handleUpdateProfile,
       profile,
+      notificationData,
+      handleNotificationData,
     }),
-    [isSidebarOpen, isModalOpen, profile]
+    [isSidebarOpen, isModalOpen, profile, notificationData, navbarColor]
   );
 
   console.log('render');

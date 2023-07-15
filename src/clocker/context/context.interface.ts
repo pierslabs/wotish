@@ -10,6 +10,8 @@ export interface ClockerContextData {
   handleUpdateProfile: () => Promise<void>;
   handleNavbarColor: (color: NavbarColor) => void;
   navbarColor: string;
+  notificationData: NotificationData;
+  handleNotificationData: (notification: NotificationData) => void;
 }
 
 export interface User {
@@ -65,4 +67,10 @@ export interface Profile {
   company: string;
   id_profile: string;
   phone?: string;
+}
+
+export interface NotificationData {
+  open: boolean;
+  message: string;
+  alert: boolean;
 }
