@@ -7,7 +7,7 @@ const Navbar = () => {
   const { handleSideBarOpen, user } = useContext(ClockerContext);
 
   return (
-    <nav className='bg-blue-600 w-full p-2 px-5'>
+    <nav className='bg-blue-600 w-full p-2 px-5 h-[calc(60px)]'>
       <div className=' flex justify-between align-middle'>
         <button
           onClick={() => handleSideBarOpen(true)}
