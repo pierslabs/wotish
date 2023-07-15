@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import { memo, useContext, useEffect, useRef } from 'react';
+import { memo, useContext, useEffect } from 'react';
 import { Layout } from '../components/Layout';
 import { ClockerContext } from '../context/ClockerContext';
 import CardList from '../components/common/CardList';
@@ -14,7 +14,7 @@ const Home = () => {
   const { handleNavbarColor } = useContext(ClockerContext);
   useEffect(() => {
     handleNavbarColor(NavbarColor.DEFAULT);
-  }, []);
+  }, [handleNavbarColor]);
 
   return (
     <Layout>

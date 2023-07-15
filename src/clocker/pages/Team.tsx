@@ -7,7 +7,7 @@ const Team = () => {
   const { handleNavbarColor } = useContext(ClockerContext);
   useEffect(() => {
     handleNavbarColor(NavbarColor.TEAM);
-  }, []);
+  }, [handleNavbarColor]);
   return (
     <Layout>
       <div>Team</div>

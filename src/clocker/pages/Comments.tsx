@@ -7,7 +7,7 @@ const Comments = () => {
   const { handleNavbarColor } = useContext(ClockerContext);
   useEffect(() => {
     handleNavbarColor(NavbarColor.COMMENTS);
-  }, []);
+  }, [handleNavbarColor]);
   return (
     <Layout>
       <div>Comments</div>

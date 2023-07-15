@@ -11,7 +11,7 @@ const Navbar = () => {
   const { handleNavbarColor, navbarColor } = useContext(ClockerContext);
   useEffect(() => {
     handleNavbarColor(NavbarColor.DEFAULT);
-  }, []);
+  }, [handleNavbarColor]);
 
   return (
     <nav

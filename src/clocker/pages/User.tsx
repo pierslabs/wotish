@@ -14,9 +14,11 @@ const User = () => {
   const { user, handleModalOpen, profile } = useContext(ClockerContext);
 
   const { handleNavbarColor } = useContext(ClockerContext);
+
   useEffect(() => {
     handleNavbarColor(NavbarColor.USER);
-  }, []);
+  }, [handleNavbarColor]);
+
   return (
     <Layout>
       {!profile?.dni && <DNIForm />}

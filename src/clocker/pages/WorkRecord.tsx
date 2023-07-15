@@ -12,7 +12,7 @@ const WorkRecord = () => {
   const { handleNavbarColor } = useContext(ClockerContext);
   useEffect(() => {
     handleNavbarColor(NavbarColor.WORK_RECORD);
-  }, []);
+  }, [handleNavbarColor]);
   return (
     <Layout>
       <div className='bg-green-100 p-1 waves  h-[calc(100vh-60px)]'>

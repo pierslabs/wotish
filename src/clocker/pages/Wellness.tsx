@@ -7,7 +7,7 @@ const Wellness = () => {
   const { handleNavbarColor } = useContext(ClockerContext);
   useEffect(() => {
     handleNavbarColor(NavbarColor.WELLNESS);
-  }, []);
+  }, [handleNavbarColor]);
   return (
     <Layout>
       <div>Weellness</div>

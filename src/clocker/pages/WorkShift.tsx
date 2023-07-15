@@ -7,7 +7,7 @@ const WorkShift = () => {
   const { handleNavbarColor } = useContext(ClockerContext);
   useEffect(() => {
     handleNavbarColor(NavbarColor.WORK_SHIFT);
-  }, []);
+  }, [handleNavbarColor]);
 
   return (
     <Layout>
