@@ -2,7 +2,6 @@ import { Layout } from '../components/Layout';
 import '@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css';
 import { Calendar, Day } from '@hassanmojab/react-modern-calendar-datepicker';
 import { SelectedWorkDayData } from '../data/selectedWorkDayData';
-import { AiOutlineFieldTime } from 'react-icons/ai';
 
 const WorkRecord = () => {
   const selectedDays: Day[] = SelectedWorkDayData;
