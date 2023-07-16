@@ -10,7 +10,7 @@ import {
   updateCLocker,
 } from '../../db/supabase';
 import { ToastContainer, toast } from 'react-toastify';
-import moment, { Duration, Moment } from 'moment';
+import moment, { Duration } from 'moment';
 
 export interface Clocker {
   id: number;
