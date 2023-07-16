@@ -37,12 +37,15 @@ const FingerPrint: FC<FingerPrintProps> = ({ profile }) => {
           </div>
           <div className='flex gap-2 justify-end '>
             <h1 className='text-blue-800'>Tiempo:</h1>
-            {hoursWorked &&
-              `${hoursWorked.hours()}:${hoursWorked.minutes()}:${hoursWorked.seconds()}`}
+            {hoursWorked && !loading ? (
+              `${hoursWorked.hours()}:${hoursWorked.minutes()}:${hoursWorked.seconds()}`
+            ) : (
+              <h1 className='text-green-500'>Calculando...</h1>
+            )}
           </div>
         </div>
       )}
-      <div className='flex flex-col  justify-around items-center h-[calc(100vh-50px)] '>
+      <div className='flex flex-col  justify-around items-center h-[calc(100vh-80px)] '>
         {clocker?.active ? (
           <div className='bg-white'>
             <button

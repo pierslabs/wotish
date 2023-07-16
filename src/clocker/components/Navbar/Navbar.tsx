@@ -15,7 +15,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`w-full p-2 px-5 h-[calc(50px)]`}
+      className={`w-full p-2 px-5  h-[calc(50px)] `}
       style={{ backgroundColor: navbarColor }}
     >
       <div className=' flex justify-between align-middle'>
