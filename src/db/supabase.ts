@@ -114,3 +114,18 @@ export const getLastActiveClocker = async (userId: string) => {
     console.log(error);
   }
 };
+
+export const getUserClockers = async (profile_id: string) => {
+  try {
+    const res = await supabase
+      .from('clockers')
+      .select()
+      .eq('id_profile', profile_id)
+      .eq('active', false)
+      .order('created_at', { ascending: false });
+
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
+};
