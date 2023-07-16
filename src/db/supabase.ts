@@ -64,3 +64,53 @@ export const createProfile = async (user: User) => {
     console.log(error);
   }
 };
+
+// CLockers
+export const createNewCLocker = async (userId: string) => {
+  try {
+    const res = await supabase
+      .from('clockers')
+      .insert({
+        id_profile: userId,
+        active: true,
+      })
+      .select();
+
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const updateCLocker = async (clockerId: number) => {
+  try {
+    const res = await supabase
+      .from('clockers')
+      .update({
+        active: false,
+        exit: new Date().toISOString(),
+      })
+      .eq('id', clockerId)
+      .select();
+
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getLastActiveClocker = async (userId: string) => {
+  try {
+    const res = await supabase
+      .from('clockers')
+      .select()
+      .eq('id_profile', userId)
+      .eq('active', true)
+      .order('created_at', { ascending: false })
+      .limit(1);
+
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
+};
