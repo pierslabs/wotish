@@ -29,13 +29,17 @@ const useUserForm = () => {
       const res = await updateUser(user.id, data);
 
       if (res.error) {
-        return toast.error('Error al actualizar el usuario');
+        return toast.error('Error al actualizar el usuario', {
+          position: 'top-center',
+        });
       }
       await handleUpdateProfile();
       handleModalOpen(false);
     } catch (error) {
       console.log(error);
-      toast.error('Error al actualizar el usuario');
+      toast.error('Error al actualizar el usuario', {
+        position: 'top-center',
+      });
     }
 
     setLoading(false);
