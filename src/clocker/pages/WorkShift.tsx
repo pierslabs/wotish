@@ -120,7 +120,7 @@ const WorkShift = () => {
     }, 1000);
 
     return () => clearInterval(intervalId);
-  }, []);
+  }, [hoursWorked]);
 
   useEffect(() => {
     getLastClocker();
