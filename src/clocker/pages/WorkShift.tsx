@@ -129,6 +129,19 @@ const WorkShift = () => {
   return (
     <Layout>
       <ToastContainer />
+      {loading ? null : (
+        <div className='flex justify-between items-center p-1 mt-2'>
+          <div className='flex gap-1 justify-end'>
+            <h1>Entrada:</h1>
+            {clocker?.entry}
+          </div>
+          <div className='flex gap-1 justify-end'>
+            <h1>Tiempo:</h1>
+            {hoursWorked &&
+              `${hoursWorked.hours()}:${hoursWorked.minutes()}:${hoursWorked.seconds()}`}
+          </div>
+        </div>
+      )}
       <div className='flex flex-col  justify-around items-center h-[calc(100vh-50px)]'>
         {clocker?.active ? (
           <div>
@@ -157,21 +170,7 @@ const WorkShift = () => {
             </button>
           </div>
         )}
-        <div className='flex gap-3'>
-          {loading ? null : (
-            <div>
-              <div className='flex gap-4 justify-end'>
-                <h1>Hora de entrada:</h1>
-                {clocker?.entry}
-              </div>
-              <div className='flex gap-4 justify-end'>
-                <h1>Hora realizadas:</h1>
-                {hoursWorked &&
-                  `${hoursWorked.hours()}:${hoursWorked.minutes()}:${hoursWorked.seconds()}`}
-              </div>
-            </div>
-          )}
-        </div>
+        <div className='flex gap-3'></div>
       </div>
     </Layout>
   );
