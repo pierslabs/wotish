@@ -31,7 +31,7 @@ const CommentItem: FC<CommentItemProps> = ({
 
   const date = moment(created_at).format('DD/MM/YYYY');
   return (
-    <div className={`${colorCard[stars]} rounded-lg border shadow`}>
+    <div className={`${colorCard[stars]} rounded-lg border-2`}>
       <div className='flex justify-between items-baseline px-5 py-2 text-gray-600 rounded-full'>
         <div className='text-gray-700'>{date}</div>
         <div className='flex bg justify-end gap-3 items-center '>
@@ -39,7 +39,7 @@ const CommentItem: FC<CommentItemProps> = ({
           <AiFillStar color='yellow' size={25} />
         </div>
       </div>
-      <div className='my-2 bg-white p-2 h-44 '>
+      <div className='my-2 bg-white p-2'>
         <br />
         <p>{comment}</p>
         <br />
