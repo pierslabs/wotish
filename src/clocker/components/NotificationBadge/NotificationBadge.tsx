@@ -26,8 +26,6 @@ const NotificationBadge = () => {
     navigate('/work-record');
   };
 
-  console.log(notificationData);
-
   return (
     <button
       className='relative inline-block'
