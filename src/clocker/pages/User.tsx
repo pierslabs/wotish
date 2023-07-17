@@ -12,9 +12,17 @@ import { NavbarColor } from '../components/Navbar/navbar.enum';
 import { getUserClockers } from '../../db/supabase';
 import { Clocker } from '../components/fingerPrint/fingerPrint.types';
 import ClockerCard from '../components/clockerCard/ClockerCard';
+import { FiUser } from 'react-icons/fi';
+import { LiaCommentsSolid } from 'react-icons/lia';
+import { FaClockRotateLeft } from 'react-icons/fa6';
 
 const User = () => {
   const { user, handleModalOpen, profile } = useContext(ClockerContext);
+  const [showTabSelected, setShowTabSelected] = useState({
+    user: true,
+    comments: false,
+    clockers: false,
+  });
 
   const { handleNavbarColor } = useContext(ClockerContext);
 
@@ -35,11 +43,65 @@ const User = () => {
   return (
     <Layout>
       {!profile?.dni && <DNIForm />}
-
+      <div className='flex justify-around items-baseline p-3'>
+        <div
+          className='flex gap-2 items-baseline cursor-pointer transition-all duration-100 '
+          onClick={() =>
+            setShowTabSelected({ user: true, comments: false, clockers: false })
+          }
+        >
+          <FiUser color={showTabSelected.user ? '#000' : 'text-gray-700'} />
+          <p
+            className={`${
+              showTabSelected.user ? 'text-blue-600' : 'text-gray-700'
+            }`}
+          >
+            Perfil
+          </p>
+        </div>
+        <div
+          className='flex gap-2 items-baseline cursor-pointer transition-all duration-100 '
+          onClick={() =>
+            setShowTabSelected({ user: false, comments: true, clockers: false })
+          }
+        >
+          <LiaCommentsSolid
+            color={showTabSelected.comments ? 'text-blue-600' : 'text-gray-700'}
+          />
+          <p
+            className={`${
+              showTabSelected.comments ? 'text-blue-600' : 'text-gray-700'
+            }`}
+          >
+            Comentarios
+          </p>
+        </div>
+        <div
+          className='flex gap-2 items-baseline cursor-pointer'
+          onClick={() =>
+            setShowTabSelected({ user: false, comments: false, clockers: true })
+          }
+        >
+          <FaClockRotateLeft
+            color={showTabSelected.clockers ? 'text-blue-600' : 'text-gray-700'}
+          />
+          <p
+            className={`${
+              showTabSelected.clockers ? 'text-blue-600' : 'text-gray-700'
+            }`}
+          >
+            Registros
+          </p>
+        </div>
+      </div>
       <UserForm />
 
       <div className='  mx-auto lg:w-2/3'>
-        <section className='p-2'>
+        <section
+          className={`${
+            showTabSelected.user ? 'opacity-100 visible' : 'opacity-0 hidden'
+          } transition duration-1000`}
+        >
           <h1 className='text-xl mr-auto mt-4 p-3'>Tu Perfil</h1>
           <hr />
           <div className='flex flex-col w-full  justify-evenly items-center sm:flex-row mt-7 '>
@@ -89,7 +151,12 @@ const User = () => {
         </section>
 
         {/* Comentarios */}
-        <section className='p-2'>
+
+        <section
+          className={`${
+            showTabSelected.comments ? 'opacity-100' : 'opacity-0 hidden'
+          } transition duration-1000`}
+        >
           <h1 className='text-xl mr-auto mt-6 p-3'>
             Comentarios de tus compañeros
           </h1>
@@ -106,8 +173,13 @@ const User = () => {
             ))}
           </div>
         </section>
+
         {/* Tabla de fichajes */}
-        <section className='p-2'>
+        <section
+          className={`${
+            showTabSelected.clockers ? '' : 'hidden'
+          } transition duration-1000`}
+        >
           <h1 className='text-xl mr-auto mt-6 p-3'>Tus Registros</h1>
           <hr />
           {clockers.map((clocker) => (
