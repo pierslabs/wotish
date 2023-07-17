@@ -11,6 +11,7 @@ import { CommentData, fakeCommentData } from '../data/fakeComments';
 import { NavbarColor } from '../components/Navbar/navbar.enum';
 import { getUserClockers } from '../../db/supabase';
 import { Clocker } from '../components/fingerPrint/fingerPrint.types';
+import ClockerCard from '../components/clockerCard/ClockerCard';
 
 const User = () => {
   const { user, handleModalOpen, profile } = useContext(ClockerContext);
@@ -107,21 +108,10 @@ const User = () => {
         </section>
         {/* Tabla de fichajes */}
         <section className='p-2'>
-          <h1 className='text-xl mr-auto mt-6 p-3'>Tabla de fichajes</h1>
+          <h1 className='text-xl mr-auto mt-6 p-3'>Tus Registros</h1>
           <hr />
           {clockers.map((clocker) => (
-            <div className='flex  justify-around'>
-              <div className='bg-white p-2 flex gap-1 justify-center'>
-                <label htmlFor=''>Entrada:</label>
-
-                <p className='text-gray-500'>{clocker.entry}</p>
-              </div>
-              <div className='bg-white p-2 flex gap-1 justify-center'>
-                <label htmlFor=''>Salida:</label>
-
-                <p className='text-gray-500'>{clocker.exit}</p>
-              </div>
-            </div>
+            <ClockerCard entry={clocker.entry} exit={clocker.exit} />
           ))}
           <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mt-5'></div>
         </section>
