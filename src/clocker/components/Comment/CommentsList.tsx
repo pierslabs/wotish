@@ -14,7 +14,7 @@ const CommentsList: FC<CommentListProps> = ({ showTabSelected }) => {
         showTabSelected.comments ? 'opacity-100' : 'opacity-0 hidden'
       } transition duration-1000`}
     >
-      <h1 className='text-xl mr-auto mt-6 p-3'>
+      <h1 className='text-2xl mr-auto mt-6 p-3'>
         Comentarios de tus compañeros
       </h1>
       <hr />

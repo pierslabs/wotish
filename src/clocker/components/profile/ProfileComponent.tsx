@@ -21,7 +21,7 @@ const ProfileComponent: FC<ProfileProps> = ({
         showTabSelected.user ? 'opacity-100 visible' : 'opacity-0 hidden'
       } transition duration-1000`}
     >
-      <h1 className='text-xl mr-auto mt-4 p-3'>Tu Perfil</h1>
+      <h1 className='text-2xl mr-auto mt-4 p-3'>Tu Perfil</h1>
       <hr />
       <div className='flex flex-col w-full  justify-evenly items-center sm:flex-row mt-7 '>
         <div className='bg-blue-300  rounded-lg p-4 shadow hidden sm:block justify-center '>

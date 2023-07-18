@@ -14,6 +14,7 @@ import ProfileComponent from '../components/profile/ProfileComponent';
 import CommentsList from '../components/Comment/CommentsList';
 import ClockerTable from '../components/clockerTable/ClockerTable';
 
+// TODO: Refactor this interface to a global one
 export interface ShowSelected {
   user: boolean;
   comments: boolean;
