@@ -52,10 +52,11 @@ const useUserForm = () => {
       if (!user) return;
 
       setUserProfile({
-        full_name: user.full_name || 'introduce tu nombre',
-        dni: user.dni || 'introduce tu dni',
-        email: user.email || 'introduce tu email',
-        company: user.company || 'introduce tu empresa',
+        full_name: user.full_name ?? 'introduce tu nombre',
+        dni: user.dni ?? 'introduce tu dni',
+        email: user.email ?? 'introduce tu email',
+        company: user.company ?? 'introduce tu empresa',
+        phone: user.phone ?? 'introduce tu telefono',
       });
 
       // Set values to form
