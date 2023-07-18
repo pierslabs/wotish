@@ -5,8 +5,6 @@ import { ClockerContext } from '../context/ClockerContext';
 import 'react-toastify/dist/ReactToastify.css';
 import UserForm from '../components/userForm/UserForm';
 import DNIForm from '../components/dniForm/DNIForm';
-import CommentItem from '../components/common/CommentItem';
-import { CommentData, fakeCommentData } from '../data/fakeComments';
 import { NavbarColor } from '../components/Navbar/navbar.enum';
 import { getUserClockers } from '../../db/supabase';
 import { Clocker } from '../components/fingerPrint/fingerPrint.types';
@@ -15,6 +13,7 @@ import { FiUser } from 'react-icons/fi';
 import { LiaCommentsSolid } from 'react-icons/lia';
 import { FaClockRotateLeft } from 'react-icons/fa6';
 import ProfileComponent from '../components/profile/ProfileComponent';
+import CommentsList from '../components/Comment/CommentsList';
 
 export interface ShowSelected {
   user: boolean;
@@ -44,6 +43,7 @@ const User = () => {
         .then((data) => data && setClockers(data.data!))
         .catch((err) => console.log(err));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   return (
@@ -111,27 +111,7 @@ const User = () => {
         />
         {/* Comentarios */}
 
-        <section
-          className={`${
-            showTabSelected.comments ? 'opacity-100' : 'opacity-0 hidden'
-          } transition duration-1000`}
-        >
-          <h1 className='text-xl mr-auto mt-6 p-3'>
-            Comentarios de tus compañeros
-          </h1>
-          <hr />
-          <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mt-5'>
-            {fakeCommentData.map((comment: CommentData) => (
-              <CommentItem
-                key={comment.id}
-                stars={comment.stars}
-                comment={comment.comment}
-                user={comment.name}
-                created_at={comment.created_at}
-              />
-            ))}
-          </div>
-        </section>
+        <CommentsList showTabSelected={showTabSelected} />
 
         {/* Tabla de fichajes */}
         <section
