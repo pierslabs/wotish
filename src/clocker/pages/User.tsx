@@ -6,14 +6,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import UserForm from '../components/userForm/UserForm';
 import DNIForm from '../components/dniForm/DNIForm';
 import { NavbarColor } from '../components/Navbar/navbar.enum';
-import { getUserClockers } from '../../db/supabase';
-import { Clocker } from '../components/fingerPrint/fingerPrint.types';
-import ClockerCard from '../components/clockerCard/ClockerCard';
+
 import { FiUser } from 'react-icons/fi';
 import { LiaCommentsSolid } from 'react-icons/lia';
 import { FaClockRotateLeft } from 'react-icons/fa6';
 import ProfileComponent from '../components/profile/ProfileComponent';
 import CommentsList from '../components/Comment/CommentsList';
+import ClockerTable from '../components/clockerTable/ClockerTable';
 
 export interface ShowSelected {
   user: boolean;
@@ -31,20 +30,9 @@ const User = () => {
 
   const { handleNavbarColor } = useContext(ClockerContext);
 
-  const [clockers, setClockers] = useState<Clocker[]>([]);
-
   useEffect(() => {
     handleNavbarColor(NavbarColor.USER);
   }, [handleNavbarColor]);
-
-  useEffect(() => {
-    if (profile) {
-      getUserClockers(profile?.id_profile)
-        .then((data) => data && setClockers(data.data!))
-        .catch((err) => console.log(err));
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user]);
 
   return (
     <Layout>
@@ -100,8 +88,11 @@ const User = () => {
           </p>
         </div>
       </div>
+
+      {/* UseForm Component */}
       <UserForm />
 
+      {/* ProfileComponet */}
       <div className='  mx-auto lg:w-2/3'>
         <ProfileComponent
           user={user}
@@ -109,23 +100,16 @@ const User = () => {
           handleModalOpen={handleModalOpen}
           profile={profile}
         />
-        {/* Comentarios */}
 
+        {/* ComMentList */}
         <CommentsList showTabSelected={showTabSelected} />
 
         {/* Tabla de fichajes */}
-        <section
-          className={`${
-            showTabSelected.clockers ? '' : 'hidden'
-          } transition duration-1000`}
-        >
-          <h1 className='text-xl mr-auto mt-6 p-3'>Tus Registros</h1>
-          <hr />
-          {clockers.map((clocker) => (
-            <ClockerCard entry={clocker.entry} exit={clocker.exit} />
-          ))}
-          <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mt-5'></div>
-        </section>
+        <ClockerTable
+          showTabSelected={showTabSelected}
+          user={user}
+          profile={profile}
+        />
       </div>
     </Layout>
   );
