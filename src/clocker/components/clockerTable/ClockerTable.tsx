@@ -6,11 +6,31 @@ import { Clocker } from '../fingerPrint/fingerPrint.types';
 import Table from '../common/Table';
 import ClockerRow from '../clockerRow/ClockerRow';
 import { BsSearch } from 'react-icons/bs';
+import moment from 'moment';
 
+// refactor this interfaces to a global one
 export interface ClockerTableProps {
   showTabSelected: ShowSelected;
   user: User;
   profile: Profile | undefined;
+}
+
+// Definimos la estructura del objeto resultante después de la reducción
+interface ClockerTableState {
+  date: string;
+  entries: string[];
+  exits: string[];
+  totalHours: number;
+}
+type ResultAccumulator = { [date: string]: ClockerTableState };
+
+interface ClockerTableResult {
+  [date: string]: {
+    date: string;
+    entries: string[];
+    exits: string[];
+    totalHours: number;
+  };
 }
 
 const ClockerTable: FC<ClockerTableProps> = ({
@@ -28,6 +48,50 @@ const ClockerTable: FC<ClockerTableProps> = ({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
+
+  // Función para obtener la diferencia en horas entre dos fechas
+  function getHourDifference(entry: string, exit: string) {
+    const entryDate: Date = new Date(entry);
+    const exitDate: Date = new Date(exit);
+    const diffInMilliseconds = moment(exitDate).diff(moment(entryDate));
+    const diffInHours = moment.duration(diffInMilliseconds).asHours();
+    return diffInHours;
+  }
+
+  // Utilizar reduce para agrupar y calcular las horas
+  const result: ClockerTableResult = clockers.reduce(
+    (acc: ResultAccumulator, obj: Clocker) => {
+      const dateStr: string = moment(obj.entry).format('DD/MM/YYYY');
+
+      if (!acc[dateStr]) {
+        acc[dateStr] = {
+          date: dateStr,
+          entries: [],
+          exits: [],
+          totalHours: 0,
+        };
+      }
+
+      acc[dateStr].entries.push(obj.entry);
+      acc[dateStr].exits.push(obj.exit);
+
+      // Calcular la diferencia en horas entre entry y exit y acumular el total
+      const hoursDiff = getHourDifference(obj.entry, obj.exit);
+      acc[dateStr].totalHours += hoursDiff;
+
+      return acc;
+    },
+    {}
+  );
+  // Convertir el objeto result en un array
+  const resultArray: ClockerTableState[] = Object.keys(result).map((key) => ({
+    date: key,
+    entries: result[key].entries,
+    exits: result[key].exits,
+    totalHours: result[key].totalHours,
+  }));
+
+  console.log(resultArray);
 
   return (
     <section
@@ -50,11 +114,13 @@ const ClockerTable: FC<ClockerTableProps> = ({
       </h1>
       <hr />
       <Table heads={['Fecha', 'Entrada', 'Salida']}>
-        {clockers.map((clocker, index) => (
+        {resultArray.map((clocker, index) => (
           <ClockerRow
-            key={clocker.id}
-            entry={clocker.exit}
-            exit={clocker.exit}
+            key={clocker.date}
+            entry={clocker.entries}
+            exit={clocker.exits}
+            date={clocker.date}
+            hours={clocker.totalHours}
             index={index}
           />
         ))}
