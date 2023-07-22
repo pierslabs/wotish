@@ -23,6 +23,19 @@ const FingerPrint: FC<FingerPrintProps> = ({ profile }) => {
     if (profile) getLastClocker(profile);
   }, [profile, clocker?.active]);
 
+  // Obtener la cantidad de horas trabajadas y agregar un cero delante si es necesario
+  const formattedHoursWorked = String(hoursWorked?.hours()).padStart(2, '0');
+  const formattedMinutesWorked = String(hoursWorked?.minutes()).padStart(
+    2,
+    '0'
+  );
+  const formattedSecondsWorked = String(hoursWorked?.seconds()).padStart(
+    2,
+    '0'
+  );
+
+  const hours = `${formattedHoursWorked}:${formattedMinutesWorked}:${formattedSecondsWorked}`;
+
   return (
     <div>
       {loading ? (
@@ -38,40 +51,45 @@ const FingerPrint: FC<FingerPrintProps> = ({ profile }) => {
           <div className='flex gap-2 justify-end '>
             <h1 className='text-blue-800'>Tiempo:</h1>
             {hoursWorked && !loading ? (
-              `${hoursWorked.hours()}:${hoursWorked.minutes()}:${hoursWorked.seconds()}`
+              <p> {hours}</p>
             ) : (
               <h1 className='text-green-500'>Calculando...</h1>
             )}
           </div>
         </div>
       )}
-      <div className='flex flex-col  justify-around items-center h-[calc(100vh-80px)] '>
+      <div className='flex flex-col  justify-around items-center h-[calc(100vh-111px)] '>
         {clocker?.active ? (
-          <div className='bg-white'>
+          <div className='bg-transparent flex flex-col justify-center '>
             <button
               disabled={loading}
               type='button'
-              className={`border-2 border-blue-300 flex flex-col justify-between gap-4 items-center`}
+              className={`border-2 border-blue-300  gap-4  rounded-full bg-white hover:bg-gray-100 `}
               onClick={handleWorkExit}
             >
-              <IoFingerPrintOutline size={'300px'} className='m-3 ' />
-              <p className='text-center w-full  bg-green-500 p-2 text-white'>
-                Salir
-              </p>
+              <IoFingerPrintOutline
+                size={'150px'}
+                className='m-3 '
+                style={{ margin: 20 }}
+                color='red'
+              />
+              <p className='text-center text-xl p-3 '>Salir</p>
             </button>
           </div>
         ) : (
-          <div className='bg-white'>
+          <div className='bg-transparent flex flex-col justify-center '>
             <button
               disabled={loading}
               type='button'
-              className={`border-2 border-blue-300 flex flex-col justify-between gap-4 items-center`}
+              className={`border-2 border-blue-300  gap-4  rounded-full bg-white hover:bg-gray-100 `}
               onClick={() => handleWorkSign(profile!)}
             >
-              <IoFingerPrintOutline size={'300px'} style={{ margin: 20 }} />
-              <p className='text-center w-full  bg-blue-500 p-2 text-white'>
-                Entrar
-              </p>
+              <IoFingerPrintOutline
+                size={'150px'}
+                style={{ margin: 20 }}
+                color='green'
+              />
+              <p className='text-center text-xl p-3 '>Entrar</p>
             </button>
           </div>
         )}

@@ -21,6 +21,7 @@ const useFingerPrint = () => {
     setIsLoading(true);
     if (profile?.id_profile) {
       const res = await createNewCLocker(profile?.id_profile);
+      console.log(res);
       if (res?.error) {
         return toast.error('Error al registrar el turno', {
           position: 'top-center',
