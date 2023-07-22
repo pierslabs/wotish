@@ -78,7 +78,6 @@ const useClockerTable = ({ profile, user }: ClockerTableProps) => {
         .catch((err) => console.log(err));
     }
   }, [user]);
-  console.log({ filterClockers });
 
   return {
     filterClockers,

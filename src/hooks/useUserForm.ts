@@ -36,7 +36,6 @@ const useUserForm = () => {
       await handleUpdateProfile();
       handleModalOpen(false);
     } catch (error) {
-      console.log(error);
       toast.error('Error al actualizar el usuario', {
         position: 'top-center',
       });

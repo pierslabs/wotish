@@ -119,7 +119,6 @@ export function ClockerProvider({ children }: ClockerProviderProps) {
     [isSidebarOpen, isModalOpen, profile, notificationData, navbarColor]
   );
 
-  console.log('render');
   return (
     <ClockerContext.Provider value={values}>{children}</ClockerContext.Provider>
   );

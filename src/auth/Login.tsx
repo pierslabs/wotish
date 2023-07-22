@@ -4,7 +4,6 @@ import { ThemeSupa } from '@supabase/auth-ui-shared';
 import { AiOutlineFieldTime } from 'react-icons/ai';
 
 const Login = () => {
-  console.log('WeLcome to Login');
   const { supabase } = useAuth();
   return (
     <div className='waves'>
