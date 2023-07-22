@@ -29,7 +29,7 @@ const ClockerTable: FC<ClockerTableProps> = ({
         showTabSelected.clockers ? '' : 'hidden'
       } transition duration-1000`}
     >
-      <div className='mt-6 py-3 flex items-center justify-between '>
+      <div className='mt-6 py-3 flex items-center justify-between p-2'>
         <p className='sm:text-2xl min-w-[100px]'>Tus Registros</p>
 
         <div className='relative w-[200px]'>

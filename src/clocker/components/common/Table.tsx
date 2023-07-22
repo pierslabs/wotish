@@ -7,7 +7,7 @@ export interface TableProps {
 
 const Table: FC<TableProps> = ({ heads, children }) => {
   return (
-    <div className='container mx-auto'>
+    <div className='container mx-auto p-2'>
       <table className='min-w-full bg-white'>
         <thead>
           <tr>
