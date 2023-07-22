@@ -9,7 +9,7 @@ import useClockerTable from './useClockerTable';
 export interface ClockerTableProps {
   showTabSelected: ShowSelected;
   user: User;
-  profile: Profile;
+  profile: Profile | undefined;
 }
 
 const ClockerTable: FC<ClockerTableProps> = ({

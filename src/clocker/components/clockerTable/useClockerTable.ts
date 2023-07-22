@@ -13,7 +13,7 @@ import {
 import { Profile, User } from '../../context/context.interface';
 
 export interface ClockerTableProps {
-  profile: Profile;
+  profile: Profile | undefined;
   user: User;
 }
 
