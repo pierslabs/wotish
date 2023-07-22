@@ -40,7 +40,7 @@ const User = () => {
       {!profile?.dni && <DNIForm />}
       <div className='flex justify-around items-baseline p-3'>
         <div
-          className='flex gap-2 items-baseline cursor-pointer transition-all duration-100 '
+          className='flex gap-1 items-baseline cursor-pointer transition-all duration-100 '
           onClick={() =>
             setShowTabSelected({ user: true, comments: false, clockers: false })
           }
@@ -55,13 +55,14 @@ const User = () => {
           </p>
         </div>
         <div
-          className='flex gap-2 items-baseline cursor-pointer transition-all duration-100 '
+          className='flex gap-1 items-center cursor-pointer transition-all duration-100 '
           onClick={() =>
             setShowTabSelected({ user: false, comments: true, clockers: false })
           }
         >
           <LiaCommentsSolid
             color={showTabSelected.comments ? 'text-blue-600' : 'text-gray-700'}
+            size={16}
           />
           <p
             className={`${
@@ -72,13 +73,14 @@ const User = () => {
           </p>
         </div>
         <div
-          className='flex gap-2 items-baseline cursor-pointer'
+          className='flex gap-1 items-center cursor-pointer'
           onClick={() =>
             setShowTabSelected({ user: false, comments: false, clockers: true })
           }
         >
           <FaClockRotateLeft
             color={showTabSelected.clockers ? 'text-blue-600' : 'text-gray-700'}
+            size={14}
           />
           <p
             className={`${
