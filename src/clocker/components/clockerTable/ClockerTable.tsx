@@ -5,6 +5,8 @@ import Table from '../common/Table';
 import ClockerRow from '../clockerRow/ClockerRow';
 import { BsSearch } from 'react-icons/bs';
 import useClockerTable from './useClockerTable';
+import EmptyState from '../emptyState/EmptyState';
+import Loader from '../common/Loader';
 
 export interface ClockerTableProps {
   showTabSelected: ShowSelected;
@@ -17,7 +19,7 @@ const ClockerTable: FC<ClockerTableProps> = ({
   user,
   profile,
 }) => {
-  const { filteredClockers, setFilterClockers, filterClockers } =
+  const { filteredClockers, setFilterClockers, filterClockers, loading } =
     useClockerTable({
       user,
       profile,
@@ -29,6 +31,7 @@ const ClockerTable: FC<ClockerTableProps> = ({
         showTabSelected.clockers ? '' : 'hidden'
       } transition duration-1000`}
     >
+      {loading && <Loader />}
       <div className='mt-6 py-3 flex items-center justify-between p-2'>
         <p className='sm:text-2xl min-w-[100px]'>Tus Registros</p>
 
@@ -48,6 +51,9 @@ const ClockerTable: FC<ClockerTableProps> = ({
       </div>
 
       <hr />
+      {filteredClockers.length === 0 && (
+        <EmptyState text='No tienes ningún registro aún.' />
+      )}
       <Table heads={['Fecha', 'Entrada', 'Salida', 'Horas']}>
         {filteredClockers.map((clocker, index) => (
           <ClockerRow

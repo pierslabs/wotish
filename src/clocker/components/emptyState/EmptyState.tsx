@@ -1,12 +1,17 @@
+import { FC } from 'react';
 import { BsFolderX } from 'react-icons/bs';
 
-const EmptyState = () => {
+export interface EmptyStateProps {
+  text?: string;
+}
+
+const EmptyState: FC<EmptyStateProps> = ({ text }) => {
   return (
-    <div className='flex justify-center items-center h-[calc(100vh-90px)]'>
+    <div className='absolute  top-[50%] left-[25%] right-[25%] w-[50%]'>
       <div className='flex flex-col justify-center items-center'>
-        <BsFolderX className='text-6xl text-gray-300' size={200} />
-        <h1 className='text-xl text-gray-600'>
-          No has hecho ningun comentario aún.
+        <BsFolderX className='text-6xl text-gray-300' size={100} />
+        <h1 className='text-gray-600 sm:text-xl text-sm'>
+          {text ? text : 'Hemos tenido un problema.'}
         </h1>
       </div>
     </div>

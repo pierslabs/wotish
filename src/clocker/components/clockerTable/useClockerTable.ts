@@ -11,6 +11,8 @@ import {
   ClockerTableState,
 } from './clockerTable.interface';
 import { Profile, User } from '../../context/context.interface';
+import { set } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 export interface ClockerTableProps {
   profile: Profile | undefined;
@@ -20,6 +22,7 @@ export interface ClockerTableProps {
 const useClockerTable = ({ profile, user }: ClockerTableProps) => {
   const [clockers, setClockers] = useState<Clocker[]>([]);
   const [filterClockers, setFilterClockers] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
   function getHourDifference(entry: string, exit: string) {
     const entryDate: Date = new Date(entry);
@@ -72,14 +75,22 @@ const useClockerTable = ({ profile, user }: ClockerTableProps) => {
       : clockersArray;
 
   useEffect(() => {
+    setLoading(true);
     if (profile) {
       getUserClockers(profile?.id_profile)
-        .then((data) => data && setClockers(data.data!))
-        .catch((err) => console.log(err));
+        .then((data) => {
+          data && setClockers(data.data!);
+        })
+        .catch((err) => {
+          console.log(err);
+          toast.error('Error al obtener los datos');
+        });
     }
+    setLoading(false);
   }, [user]);
 
   return {
+    loading,
     filterClockers,
     setFilterClockers,
     filteredClockers,
