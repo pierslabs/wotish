@@ -2,12 +2,15 @@ import { FC } from 'react';
 import CommentItem from '../common/CommentItem';
 import { CommentData, fakeCommentData } from '../../data/fakeComments';
 import { ShowSelected } from '../../pages/User';
+import EmptyState from '../emptyState/EmptyState';
+import Loader from '../common/Loader';
 
 export interface CommentListProps {
   showTabSelected: ShowSelected;
 }
 
 const CommentsList: FC<CommentListProps> = ({ showTabSelected }) => {
+  const loading = false;
   return (
     <section
       className={`${
@@ -18,6 +21,11 @@ const CommentsList: FC<CommentListProps> = ({ showTabSelected }) => {
         Comentarios de tus compañeros
       </h1>
       <hr />
+
+      {loading && <Loader />}
+      {fakeCommentData.length === 0 && (
+        <EmptyState text='Aún no has recibido comentarios.' />
+      )}
       <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mt-5'>
         {fakeCommentData.map((comment: CommentData) => (
           <CommentItem

@@ -7,7 +7,7 @@ export interface EmptyStateProps {
 
 const EmptyState: FC<EmptyStateProps> = ({ text }) => {
   return (
-    <div className='absolute  top-[50%] left-[25%] right-[25%] w-[50%]'>
+    <div className='absolute  top-[50%] left-[10%] right-[10%] w-[80%]'>
       <div className='flex flex-col justify-center items-center'>
         <BsFolderX className='text-6xl text-gray-300' size={100} />
         <h1 className='text-gray-600 sm:text-xl text-sm'>
