@@ -3,6 +3,7 @@ export interface ClockerTableState {
   entries: string[];
   exits: string[];
   totalHours: number;
+  id: number;
 }
 export interface ResultAccumulator {
   [date: string]: ClockerTableState;
@@ -14,5 +15,6 @@ export interface ClockerTableResult {
     entries: string[];
     exits: string[];
     totalHours: number;
+    id: number;
   };
 }

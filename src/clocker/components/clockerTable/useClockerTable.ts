@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable react-hooks/exhaustive-deps */
 import moment from 'moment';
 import { useState, useEffect } from 'react';
@@ -18,8 +19,8 @@ export interface ClockerTableProps {
 
 const useClockerTable = ({ profile, user }: ClockerTableProps) => {
   const [clockers, setClockers] = useState<Clocker[]>([]);
+  const [filterClockers, setFilterClockers] = useState<string | null>(null);
 
-  // Función para obtener la diferencia en horas entre dos fechas
   function getHourDifference(entry: string, exit: string) {
     const entryDate: Date = new Date(entry);
     const exitDate: Date = new Date(exit);
@@ -28,7 +29,7 @@ const useClockerTable = ({ profile, user }: ClockerTableProps) => {
     return diffInHours;
   }
 
-  const result: ClockerTableResult = clockers.reduce(
+  const tableReducer: ClockerTableResult = clockers.reduce(
     (acc: ResultAccumulator, obj: Clocker) => {
       const dateStr: string = moment(obj.entry).format('DD/MM/YYYY');
 
@@ -38,13 +39,13 @@ const useClockerTable = ({ profile, user }: ClockerTableProps) => {
           entries: [],
           exits: [],
           totalHours: 0,
+          id: obj.id,
         };
       }
 
       acc[dateStr].entries.push(obj.entry);
       acc[dateStr].exits.push(obj.exit);
 
-      // Calcular la diferencia en horas entre entry y exit y acumular el total
       const hoursDiff = getHourDifference(obj.entry, obj.exit);
       acc[dateStr].totalHours += hoursDiff;
 
@@ -52,13 +53,23 @@ const useClockerTable = ({ profile, user }: ClockerTableProps) => {
     },
     {}
   );
-  // Convertir el objeto result en un array
-  const clockersArray: ClockerTableState[] = Object.keys(result).map((key) => ({
-    date: key,
-    entries: result[key].entries,
-    exits: result[key].exits,
-    totalHours: result[key].totalHours,
-  }));
+
+  const clockersArray: ClockerTableState[] = Object.keys(tableReducer).map(
+    (key) => ({
+      date: key,
+      entries: tableReducer[key].entries,
+      exits: tableReducer[key].exits,
+      totalHours: tableReducer[key].totalHours,
+      id: tableReducer[key].id,
+    })
+  );
+
+  const filteredClockers =
+    typeof filterClockers === 'string' && filterClockers.length > 0
+      ? clockersArray.filter((clocker) => {
+          return clocker.date.startsWith(filterClockers);
+        })
+      : clockersArray;
 
   useEffect(() => {
     if (profile) {
@@ -67,9 +78,12 @@ const useClockerTable = ({ profile, user }: ClockerTableProps) => {
         .catch((err) => console.log(err));
     }
   }, [user]);
+  console.log({ filterClockers });
 
   return {
-    clockersArray,
+    filterClockers,
+    setFilterClockers,
+    filteredClockers,
   };
 };
 

@@ -25,18 +25,26 @@ const ClockerRow: FC<ClockerRowProps> = ({
   const formattedSeconds = duration.seconds().toString().padStart(2, '0');
 
   return (
-    <tr className={`${index % 2 === 0 ? 'bg-gray-200' : ''} border p-2`}>
+    <tr
+      className={`${
+        index % 2 === 0 ? 'bg-gray-200' : ''
+      } border p-2 cursor-pointer`}
+    >
       <td className='p-3'>
         <p className='text-gray-500'>{date}</p>
       </td>
       <td className='p-3'>
         {entry.map((entry) => (
-          <p className='text-gray-500'>{moment(entry).format('HH:mm')}</p>
+          <p key={entry} className='text-gray-500'>
+            {moment(entry).format('HH:mm')}
+          </p>
         ))}
       </td>
       <td className='p-3'>
         {exit.map((exit) => (
-          <p className='text-gray-500'>{moment(exit).format('HH:mm')}</p>
+          <p key={exit} className='text-gray-500'>
+            {moment(exit).format('HH:mm')}
+          </p>
         ))}
       </td>
       <td className='p-3'>

@@ -51,7 +51,7 @@ const ProfileComponent: FC<ProfileProps> = ({
           </div>
           <div className='bg-white p-2 flex gap-3'>
             <label htmlFor=''>Phone:</label>
-            <p className='text-gray-500'>
+            <div className='text-gray-500'>
               {profile?.phone ? (
                 profile?.phone
               ) : (
@@ -59,7 +59,7 @@ const ProfileComponent: FC<ProfileProps> = ({
                   Aún no has añadido ningun teléfono
                 </p>
               )}
-            </p>
+            </div>
           </div>
           <div className='bg-white p-2 flex gap-3'>
             <label htmlFor=''>Id:</label>
